@@ -5,7 +5,6 @@ Firebirdsql wrapper inspired by subprocess.run.
 from __future__ import annotations
 
 from datetime import datetime
-from os import getenv
 from pathlib import Path
 from socket import getfqdn
 from typing import NamedTuple, Union
@@ -31,21 +30,12 @@ class CompletedTransaction(NamedTuple):
     data: Dataset
 
 
-def getpw() -> str:
-    """
-    Get FB_PASSWD from environment variables.
-    """
-    pw = getenv("FB_PASSWD")
-    if pw is None:
-        raise ValueError("Please setup FB_PASSWD in environment variables.")
-    return pw
-
-
 def connection(
     db: Path | str,
     host: str = "localhost",
     port: int = 3050,
     user: str = "TWUSER",
+    passwd: str | None = None,
 ) -> Connection:
     """
     Creating a connection to the database.
@@ -55,7 +45,7 @@ def connection(
         database=f"{db}",
         port=port,
         user=user,
-        password=getpw(),
+        password=passwd,
     )
 
 
@@ -65,6 +55,7 @@ def execute(
     db: Path | str = "",
     host: str = "localhost",
     user: str = "TWUSER",
+    passwd: str | None = None,
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
     """
@@ -75,7 +66,11 @@ def execute(
     """
     conn_success = False
     try:
-        conn = connection(host=host, db=db, user=user) if use_conn is None else use_conn
+        conn = (
+            connection(host=host, db=db, user=user, passwd=passwd)
+            if use_conn is None
+            else use_conn
+        )
         conn_success = True
 
         cur = conn.cursor()
@@ -115,6 +110,7 @@ def callproc(
     db: Path | str = "",
     host: str = "localhost",
     user: str = "TWUSER",
+    passwd: str | None = None,
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
     """
@@ -128,5 +124,6 @@ def callproc(
         host=host,
         db=db,
         user=user,
+        passwd=passwd,
         use_conn=use_conn,
     )

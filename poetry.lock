@@ -61,6 +61,7 @@ mypy-extensions = ">=0.4.3"
 pathspec = ">=0.9.0"
 platformdirs = ">=2"
 tomli = {version = ">=1.1.0", markers = "python_full_version < \"3.11.0a7\""}
+typing-extensions = {version = ">=3.10.0.0", markers = "python_version < \"3.10\""}
 
 [package.extras]
 colorama = ["colorama (>=0.4.3)"]
@@ -669,8 +670,8 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.10"
-content-hash = "c3cc31db78ac77a09aeae57734997df3bbe1bb529334c5253acaa33e81d37064"
+python-versions = "^3.9"
+content-hash = "6b814bf44ec26a688651198fe92e1c33943deab7fb7b0203738660d2612236be"
 
 [metadata.files]
 astor = [
