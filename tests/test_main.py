@@ -7,7 +7,7 @@ from src.firebirdsql_run import callproc, connection, execute
 def test_connection():
     with pytest.raises(ConnectionRefusedError):
         connection(
-            host="localhost",
+            host="random",
             db="fdb",
             port=3050,
             user="sysdba",
@@ -18,13 +18,13 @@ def test_connection():
 def test_execute():
     result = execute(
         query="SELECT * FROM table",
-        host="localhost",
+        host="random",
         db="fdb",
         user="sysdba",
         passwd="masterkey",
     )
 
-    assert result.host == "localhost"
+    assert result.host == "random"
     assert result.db == "fdb"
     assert result.user == "sysdba"
     assert result.returncode == 1
@@ -38,13 +38,13 @@ def test_callproc():
     result = callproc(
         procname="PROCNAME",
         params=("p1", "p2", "p3"),
-        host="localhost",
+        host="random",
         db="fdb",
         user="sysdba",
         passwd="masterkey",
     )
 
-    assert result.host == "localhost"
+    assert result.host == "random"
     assert result.db == "fdb"
     assert result.user == "sysdba"
     assert result.returncode == 1
