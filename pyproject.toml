@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "firebirdsql-run"
-version = "0.0.1-alpha.1"
+version = "0.0.1-alpha.3"
 description = "Firebirdsql wrapper inspired by subprocess.run"
 authors = ["DeadNews <uhjnnn@gmail.com>"]
 license = "MIT"
@@ -30,6 +30,7 @@ pep8-naming = "^0.13.0"
 poethepoet = "^0.16.0"
 pre-commit = "^2.19.0"
 pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
 safety = "^2.0.0"
 
 [build-system]
@@ -63,7 +64,7 @@ skips = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--verbose"
+addopts = "--verbose --cov=./src --cov-report=xml"
 testpaths = ["tests"]
 
 [tool.poe.tasks]
