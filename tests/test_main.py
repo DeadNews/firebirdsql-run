@@ -1,11 +1,13 @@
 #!/usr/bin/env python
+from socket import gaierror
+
 import pytest
 
 from src.firebirdsql_run import callproc, connection, execute
 
 
 def test_connection():
-    with pytest.raises(ConnectionRefusedError):
+    with pytest.raises(gaierror):
         connection(
             host="random",
             db="fdb",
