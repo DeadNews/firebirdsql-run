@@ -65,6 +65,14 @@ jobs:
       - name: Run tests
         run: poetry run pytest
 
+      - name: Upload coverage to Codecov
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == ${{ env.PYTHON_VERSION }}
+        uses: codecov/codecov-action@v3
+        with:
+          env_vars: OS,PYTHON
+          fail_ci_if_error: false
+          verbose: true
+
   build-release:
     name: Build and release
     if: github.event_name == 'release' && github.event.action == 'created'
