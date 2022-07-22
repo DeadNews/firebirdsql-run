@@ -67,7 +67,7 @@ jobs:
         run: poetry run pytest
 
       - name: Upload coverage to Codecov test
-        if: ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} == ${{ env.PYTHON_VERSION }}
+        if: ${{ matrix.python-version }} == ${{ env.PYTHON_VERSION }}
         run: |
           echo ${{ matrix.os }}
           echo ${{ matrix.python-version }}
