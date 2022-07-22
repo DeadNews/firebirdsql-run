@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Firebirdsql wrapper inspired by subprocess.run.
+Firebirdsql wrapper inspired by subprocess.run
 """
 from __future__ import annotations
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from os import getenv
 from socket import gaierror
 
 import pytest
@@ -13,7 +14,7 @@ def test_connection():
             db="fdb",
             port=3050,
             user="sysdba",
-            passwd="masterkey",
+            passwd=getenv("FB_PASSWORD", "masterkey"),
         )
 
 
@@ -23,7 +24,7 @@ def test_execute():
         host="random",
         db="fdb",
         user="sysdba",
-        passwd="masterkey",
+        passwd=getenv("FB_PASSWORD", "masterkey"),
     )
 
     assert result.host == "random"
@@ -43,7 +44,7 @@ def test_callproc():
         host="random",
         db="fdb",
         user="sysdba",
-        passwd="masterkey",
+        passwd=getenv("FB_PASSWORD", "masterkey"),
     )
 
     assert result.host == "random"
