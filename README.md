@@ -82,7 +82,7 @@ conn = connection(
 
 execute(use_conn=conn, query="SELECT * FROM TABLE")
 ...
-callproc(use_conn=conn, procname="PROCNAME", params=("p1", "p2", "p3"))
+callproc(use_conn=conn, procname="PROCNAME", params=(...))
 ...
 
 conn.close()
