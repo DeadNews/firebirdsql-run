@@ -26,11 +26,6 @@ pip install firebirdsql-run
 ### Code
 
 ```py
-from os import getenv
-
-from firebirdsql_run import execute
-
-
 result = execute(
     query="SELECT * FROM TABLE",
     host="localhost",
