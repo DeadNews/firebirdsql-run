@@ -64,7 +64,7 @@ skips = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--verbose --cov=./src --cov-report=xml"
+addopts = "--verbose --cov=./src"
 testpaths = ["tests"]
 
 [tool.poe.tasks]
