@@ -13,3 +13,66 @@
 ```sh
 pip install firebirdsql-run
 ```
+
+## Examle
+
+### Table
+
+| maker | model | type |
+| ----- | ----- | ---- |
+| B     | 1121  | PC   |
+| A     | 1232  | PC   |
+
+### Code
+
+```py
+from os import getenv
+
+from firebirdsql_run import execute
+
+
+result = execute(
+    query="SELECT * FROM TABLE",
+    host="localhost",
+    db="fdb",
+    user="sysdba",
+    passwd=getenv("FB_PASSWORD"),
+)
+
+if result.returncode != 0:
+    log.error(result)
+else:
+    log.info(result)
+```
+
+### Success result
+
+```py
+CompletedTransaction(
+    host="localhost",
+    db="fdb",
+    user="sysdba",
+    returncode=0,
+    error="",
+    query="SELECT * FROM TABLE",
+    params=(),
+    data=[
+        {"maker": "B", "model": 1121, "type": "PC"},
+        {"maker": "A", "model": 1232, "type": "PC"},
+    ],
+)
+```
+
+### Error result
+
+```py
+CompletedTransaction(
+    host="localhost",
+    db="fdb",
+    user="sysdba",
+    returncode=1,
+    error='Dynamic SQL Error\nSQL error code = -204\nTable unknown\nTABLE\nAt line 1, column 15\n',
+    query='SELECT * FROM TABLE',
+    params=(),
+    data=[])
+```
