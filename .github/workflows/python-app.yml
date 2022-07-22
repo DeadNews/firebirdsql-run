@@ -90,6 +90,14 @@ jobs:
           echo ${{ matrix.python-version }}
           echo ${{ env.PYTHON_VERSION }}
 
+      - name: Upload coverage to Codecov test 4
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == env.PYTHON_VERSION
+        run: |
+          echo matrix.os == 'ubuntu-latest' && matrix.python-version == env.PYTHON_VERSION
+          echo ${{ matrix.os }}
+          echo ${{ matrix.python-version }}
+          echo ${{ env.PYTHON_VERSION }}
+
       - name: Upload coverage to Codecov
         if: ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} == ${{ env.PYTHON_VERSION }}
         uses: codecov/codecov-action@v3
