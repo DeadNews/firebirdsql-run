@@ -70,7 +70,7 @@ jobs:
         run: |
           echo ${{ matrix.os }}
           echo ${{ matrix.python-version }}
-          echo ${{ menv.PYTHON_VERSION }}
+          echo ${{ env.PYTHON_VERSION }}
 
       - name: Upload coverage to Codecov
         if: ${{ matrix.os }} == 'ubuntu-latest' && ${{ matrix.python-version }} == ${{ env.PYTHON_VERSION }}
