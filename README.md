@@ -64,10 +64,11 @@ CompletedTransaction(
     db="fdb",
     user="sysdba",
     returncode=1,
-    error='Dynamic SQL Error\nSQL error code = -204\nTable unknown\nTABLE\nAt line 1, column 15\n',
-    query='SELECT * FROM TABLE',
+    error="Dynamic SQL Error\nSQL error code = -204\nTable unknown\nTABLE\nAt line 1, column 15\n",
+    query="SELECT * FROM TABLE",
     params=(),
-    data=[])
+    data=[],
+)
 ```
 
 ### Reuse connection
