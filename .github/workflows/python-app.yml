@@ -67,8 +67,9 @@ jobs:
         run: poetry run pytest
 
       - name: Upload coverage to Codecov test
-        if: ${{ matrix.python-version }} == ${{ env.PYTHON_VERSION }}
+        if: ${{ matrix.python-version == env.PYTHON_VERSION }}
         run: |
+          echo ${{ matrix.python-version == env.PYTHON_VERSION }}
           echo ${{ matrix.os }}
           echo ${{ matrix.python-version }}
           echo ${{ env.PYTHON_VERSION }}
