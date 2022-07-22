@@ -38,7 +38,7 @@ else:
     log.info(result)
 ```
 
-#### Info
+- `Info`
 
 ```py
 CompletedTransaction(
@@ -56,7 +56,7 @@ CompletedTransaction(
 )
 ```
 
-#### Error
+- `Error`
 
 ```py
 CompletedTransaction(
