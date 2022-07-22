@@ -16,14 +16,16 @@ pip install firebirdsql-run
 
 ## Examle
 
-### Table
+### Execute
+
+#### Table
 
 | maker | model | type |
 | ----- | ----- | ---- |
 | B     | 1121  | PC   |
 | A     | 1232  | PC   |
 
-### Code
+#### Code
 
 ```py
 result = execute(
@@ -40,7 +42,7 @@ else:
     log.info(result)
 ```
 
-### Success result
+#### Success result
 
 ```py
 CompletedTransaction(
@@ -58,7 +60,7 @@ CompletedTransaction(
 )
 ```
 
-### Error result
+#### Error result
 
 ```py
 CompletedTransaction(
@@ -70,4 +72,22 @@ CompletedTransaction(
     query='SELECT * FROM TABLE',
     params=(),
     data=[])
+```
+
+### Reuse connection
+
+```py
+conn = connection(
+    host="localhost",
+    db="fdb",
+    user="sysdba",
+    passwd=getenv("FB_PASSWORD"),
+)
+
+execute(use_conn=conn, query="SELECT * FROM TABLE")
+...
+callproc(use_conn=conn, procname="PROCNAME", params=("p1", "p2", "p3"))
+...
+
+conn.close()
 ```
