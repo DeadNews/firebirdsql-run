@@ -14,18 +14,16 @@
 pip install firebirdsql-run
 ```
 
-## Examle
+## Execute
 
-### Execute
-
-#### Table
+### Table
 
 | maker | model | type |
 | ----- | ----- | ---- |
 | B     | 1121  | PC   |
 | A     | 1232  | PC   |
 
-#### Code
+### Code
 
 ```py
 result = execute(
@@ -42,7 +40,7 @@ else:
     log.info(result)
 ```
 
-#### Success result
+### Success result
 
 ```py
 CompletedTransaction(
@@ -60,7 +58,7 @@ CompletedTransaction(
 )
 ```
 
-#### Error result
+### Error result
 
 ```py
 CompletedTransaction(
@@ -74,7 +72,7 @@ CompletedTransaction(
     data=[])
 ```
 
-### Reuse connection
+## Reuse connection
 
 ```py
 conn = connection(
