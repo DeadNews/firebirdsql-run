@@ -20,7 +20,7 @@ def test_connection():
 
 def test_execute_fail():
     result = execute(
-        query="SELECT * FROM table",
+        query="SELECT * FROM table;",
         host="random",
         db="fdb",
         user="sysdba",
@@ -39,15 +39,14 @@ def test_execute_fail():
 
 def test_execute():
     result = execute(
-        query="SELECT * FROM table",
+        query="SELECT * FROM rdb$database;",
         host="localhost",
         db="/firebird/data/my_database.fdb",
         user="my_user",
         passwd=getenv("FB_PASSWORD", "my_password"),
     )
 
-    print(result)
-    assert result.returncode ==0
+    assert result.returncode == 0
 
 
 def test_callproc_fail():
