@@ -18,7 +18,7 @@ def test_connection():
         )
 
 
-def test_execute():
+def test_execute_fail():
     result = execute(
         query="SELECT * FROM table",
         host="random",
@@ -37,7 +37,19 @@ def test_execute():
     assert result.data == []
 
 
-def test_callproc():
+def test_execute():
+    result = execute(
+        query="SELECT * FROM table",
+        host="localhost",
+        db="my_database.fdb",
+        user="my_user",
+        passwd=getenv("FB_PASSWORD", "my_password"),
+    )
+
+    assert result.returncode ==0
+
+
+def test_callproc_fail():
     result = callproc(
         procname="PROCNAME",
         params=("p1", "p2", "p3"),

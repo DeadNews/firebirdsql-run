@@ -43,11 +43,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
         python-version: ["3.9", "3.10"]
+        firebird-version: ["2.5-sc"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup firebird container
+        uses: juarezr/firebirdsql-github-action@v1.1.1
+        with:
+          version: ${{ matrix.firebird-version }}
+          firebird_database: my_database.fdb
+          firebird_user: my_user
+          firebird_password: my_password
 
       - name: Install poetry
         run: pipx install poetry
