@@ -41,11 +41,12 @@ def test_execute():
     result = execute(
         query="SELECT * FROM table",
         host="localhost",
-        db="my_database.fdb",
+        db="/firebird/data/my_database.fdb",
         user="my_user",
         passwd=getenv("FB_PASSWORD", "my_password"),
     )
 
+    print(result)
     assert result.returncode ==0
 
 
