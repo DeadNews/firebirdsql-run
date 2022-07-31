@@ -32,7 +32,7 @@ def test_execute_fail():
     assert result.user == "sysdba"
     assert result.returncode == 1
     assert len(result.error) > 0
-    assert result.query == "SELECT * FROM table"
+    assert result.query == "SELECT * FROM table;"
     assert result.params == ()
     assert result.data == []
 
@@ -46,7 +46,14 @@ def test_execute():
         passwd=getenv("FB_PASSWORD", "my_password"),
     )
 
+    assert result.host == "localhost"
+    assert result.db == "/firebird/data/my_database.fdb"
+    assert result.user == "my_user"
     assert result.returncode == 0
+    assert result.error == ""
+    assert result.query == "SELECT * FROM rdb$database;"
+    assert result.params == ()
+    assert result.data == []
 
 
 def test_callproc_fail():
