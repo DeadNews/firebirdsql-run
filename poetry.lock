@@ -257,7 +257,7 @@ flake8 = ">=3.7"
 
 [[package]]
 name = "flake8-unused-arguments"
-version = "0.0.10"
+version = "0.0.11"
 description = "flake8 extension to warn on unused function arguments"
 category = "dev"
 optional = false
@@ -700,7 +700,7 @@ testing = ["coverage (>=4)", "coverage-enable-subprocess (>=1)", "flaky (>=3)", 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ac8c2d55ca309581814b6e3c62357ac407b81a094ad68019c8a269337f0e552d"
+content-hash = "44225513ea7ecc1a72a496a28ab6518420e48969cc0a3387de7ac1f7906549b2"
 
 [metadata.files]
 astor = [
@@ -850,9 +850,8 @@ flake8-simplify = [
     {file = "flake8_simplify-0.19.3.tar.gz", hash = "sha256:2fb083bf5142a98d9c9554755cf2f56f8926eb4a33eae30c0809041b1546879e"},
 ]
 flake8-unused-arguments = [
-    {file = "flake8-unused-arguments-0.0.10.tar.gz", hash = "sha256:8a7003186e0613ca5295290f2cda5013acdfbcf775f28067ed633b2cb8229bcf"},
-    {file = "flake8_unused_arguments-0.0.10-py3-none-any.whl", hash = "sha256:4003e202fa785b58aff795f9064910f9218de8e2a9cded741199adfd41099d49"},
-    {file = "flake8_unused_arguments-0.0.10-py3.10.egg", hash = "sha256:3dab2a981e6224c0910e2431d85f5f97950a27126cc02a4e0ad4fcc687731c0f"},
+    {file = "flake8-unused-arguments-0.0.11.tar.gz", hash = "sha256:742918f5236557bfb22d1943459b8a7a4f17539e344945adb969e75a568dec87"},
+    {file = "flake8_unused_arguments-0.0.11-py3-none-any.whl", hash = "sha256:e9518ac2e284c5aecead3215a5b359d431732ccbfc787a2e6e5a6f83417f77ee"},
 ]
 gitdb = [
     {file = "gitdb-4.0.9-py3-none-any.whl", hash = "sha256:8033ad4e853066ba6ca92050b9df2f89301b8fc8bf7e9324d412a63f8bf1a8fd"},
