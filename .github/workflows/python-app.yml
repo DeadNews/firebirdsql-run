@@ -58,6 +58,9 @@ jobs:
           firebird_user: user
           firebird_password: password
 
+      - name: Test
+        run: ls -lh /firebird/data/
+
       - name: Install poetry
         run: pipx install poetry
 

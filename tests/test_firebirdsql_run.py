@@ -21,8 +21,8 @@ def test_connection():
 @pytest.mark.docker()
 def test_execute():
     result = execute(
-        # query="SELECT * FROM rdb$database;",
-        query="SELECT rdb$relation_name FROM rdb$relations WHERE rdb$view_blr IS NULL AND (rdb$system_flag IS NULL OR rdb$system_flag = 0);",
+        query="SELECT * FROM rdb$database;",
+        # query="SELECT rdb$relation_name FROM rdb$relations;",
         host="localhost",
         db="/firebird/data/test.fdb",
         user="user",
@@ -34,11 +34,8 @@ def test_execute():
     assert result.user == "user"
     assert result.returncode == 0
     assert result.error == ""
-    # assert result.query == "SELECT * FROM rdb$database;"
-    assert (
-        result.query
-        == "SELECT rdb$relation_name FROM rdb$relations WHERE rdb$view_blr IS NULL AND (rdb$system_flag IS NULL OR rdb$system_flag = 0);"
-    )
+    assert result.query == "SELECT * FROM rdb$database;"
+    # assert result.query == "SELECT rdb$relation_name FROM rdb$relations;"
     assert result.params == ()
     assert result.data == [
         {
