@@ -66,6 +66,10 @@ skips = [
 [tool.pytest.ini_options]
 addopts = "--verbose --cov=./src"
 testpaths = ["tests"]
+markers = ["docker", "slow"]
+
+[tool.coverage.report]
+exclude_lines = ["if __name__ == .__main__.:"]
 
 [tool.poe.tasks]
 isort = "isort . --check-only --diff"

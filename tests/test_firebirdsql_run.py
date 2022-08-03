@@ -18,7 +18,38 @@ def test_connection():
         )
 
 
-def test_execute_fail():
+@pytest.mark.docker()
+def test_execute():
+    result = execute(
+        query="SELECT * FROM rdb$database;",
+        host="localhost",
+        db="/firebird/data/test.fdb",
+        user="test_user",
+        passwd=getenv("FB_PASSWORD", "test_pswd"),
+    )
+
+    assert result.host == "localhost"
+    assert result.db == "/firebird/data/test.fdb"
+    assert result.user == "test_user"
+    assert result.returncode == 0
+    assert result.error == ""
+    # assert result.query == "SELECT * FROM rdb$database;"
+    assert (
+        result.query
+        == "SELECT rdb$relation_name FROM rdb$relations WHERE rdb$view_blr IS NULL AND (rdb$system_flag IS NULL OR rdb$system_flag = 0);"
+    )
+    assert result.params == ()
+    assert result.data == [
+        {
+            "rdb$character_set_name": "UTF8",
+            "rdb$description": None,
+            "rdb$relation_id": 128,
+            "rdb$security_class": None,
+        }
+    ]
+
+
+def test_execute_error():
     result = execute(
         query="SELECT * FROM table;",
         host="random",
@@ -37,33 +68,7 @@ def test_execute_fail():
     assert result.data == []
 
 
-def test_execute():
-    result = execute(
-        query="SELECT * FROM rdb$database;",
-        host="localhost",
-        db="/firebird/data/my_database.fdb",
-        user="my_user",
-        passwd=getenv("FB_PASSWORD", "my_password"),
-    )
-
-    assert result.host == "localhost"
-    assert result.db == "/firebird/data/my_database.fdb"
-    assert result.user == "my_user"
-    assert result.returncode == 0
-    assert result.error == ""
-    assert result.query == "SELECT * FROM rdb$database;"
-    assert result.params == ()
-    assert result.data == [
-        {
-            "rdb$character_set_name": "UTF8",
-            "rdb$description": None,
-            "rdb$relation_id": 128,
-            "rdb$security_class": None,
-        }
-    ]
-
-
-def test_callproc_fail():
+def test_callproc_error():
     result = callproc(
         procname="PROCNAME",
         params=("p1", "p2", "p3"),
