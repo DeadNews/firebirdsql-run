@@ -22,20 +22,18 @@ def test_connection():
 def test_execute():
     result = execute(
         query="SELECT * FROM rdb$database;",
-        # query="SELECT rdb$relation_name FROM rdb$relations;",
         host="localhost",
-        db="/firebird/data/test.fdb",
-        user="user",
-        passwd=getenv("FB_PASSWORD", "password"),
+        db="/firebird/data/my_database.fdb",
+        user="my_user",
+        passwd=getenv("FB_PASSWORD", "my_password"),
     )
 
     assert result.host == "localhost"
-    assert result.db == "/firebird/data/test.fdb"
-    assert result.user == "user"
+    assert result.db == "/firebird/data/my_database.fdb"
+    assert result.user == "my_user"
     assert result.returncode == 0
     assert result.error == ""
     assert result.query == "SELECT * FROM rdb$database;"
-    # assert result.query == "SELECT rdb$relation_name FROM rdb$relations;"
     assert result.params == ()
     assert result.data == [
         {
