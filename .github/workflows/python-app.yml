@@ -75,7 +75,7 @@ jobs:
         run: poetry run pytest --cov-report=xml
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == env.PYTHON_VERSION
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == env.PYTHON_VERSION && matrix.firebird-version == '2.5-sc'
         uses: codecov/codecov-action@v3
         with:
           env_vars: OS,PYTHON
