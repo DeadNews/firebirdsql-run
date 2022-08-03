@@ -45,7 +45,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.9", "3.10"]
-        firebird-version: ["2.5-sc"]
+        firebird-version: ["2.5-sc", "latest"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
