@@ -21,7 +21,7 @@ def test_connection():
 @pytest.mark.docker()
 def test_execute():
     result = execute(
-        query="SELECT rdb$relation_name FROM rdb$relations;",
+        query="SELECT rdb$relation_name FROM RDB$PROCEDURES;",
         host="localhost",
         db="/firebird/data/my_database.fdb",
         user="my_user",
@@ -33,7 +33,7 @@ def test_execute():
     assert result.user == "my_user"
     assert result.returncode == 0
     assert result.error == ""
-    assert result.query == "SELECT rdb$relation_name FROM rdb$relations;"
+    assert result.query == "SELECT rdb$relation_name FROM RDB$PROCEDURES;"
     assert result.params == ()
     assert result.data == [
         {
