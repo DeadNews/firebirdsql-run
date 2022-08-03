@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "firebirdsql-run"
-version = "1.0.0"
+version = "1.0.1"
 description = "Firebirdsql wrapper inspired by subprocess.run"
 authors = ["DeadNews <uhjnnn@gmail.com>"]
 license = "MIT"
@@ -66,6 +66,10 @@ skips = [
 [tool.pytest.ini_options]
 addopts = "--verbose --cov=./src"
 testpaths = ["tests"]
+markers = ["docker", "slow"]
+
+[tool.coverage.report]
+exclude_lines = ["if __name__ == .__main__.:"]
 
 [tool.poe.tasks]
 isort = "isort . --check-only --diff"

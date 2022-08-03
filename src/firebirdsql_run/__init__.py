@@ -54,6 +54,7 @@ def execute(
     params: tuple = (),
     db: Path | str = "",
     host: str = "localhost",
+    port: int = 3050,
     user: str = "TWUSER",
     passwd: str | None = None,
     use_conn: Connection | None = None,
@@ -67,7 +68,7 @@ def execute(
     conn_success = False
     try:
         conn = (
-            connection(host=host, db=db, user=user, passwd=passwd)
+            connection(host=host, db=db, port=port, user=user, passwd=passwd)
             if use_conn is None
             else use_conn
         )
@@ -109,6 +110,7 @@ def callproc(
     params: tuple = (),
     db: Path | str = "",
     host: str = "localhost",
+    port: int = 3050,
     user: str = "TWUSER",
     passwd: str | None = None,
     use_conn: Connection | None = None,
@@ -122,6 +124,7 @@ def callproc(
         query=query,
         params=params,
         host=host,
+        port=port,
         db=db,
         user=user,
         passwd=passwd,

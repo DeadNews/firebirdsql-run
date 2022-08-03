@@ -18,9 +18,29 @@ def test_connection():
         )
 
 
+@pytest.mark.docker()
 def test_execute():
     result = execute(
-        query="SELECT * FROM table",
+        query="SELECT * FROM rdb$database;",
+        host="localhost",
+        db="/firebird/data/my_database.fdb",
+        user="my_user",
+        passwd=getenv("FB_PASSWORD", "my_password"),
+    )
+
+    assert result.host == "localhost"
+    assert result.db == "/firebird/data/my_database.fdb"
+    assert result.user == "my_user"
+    assert result.returncode == 0
+    assert result.error == ""
+    assert result.query == "SELECT * FROM rdb$database;"
+    assert result.params == ()
+    assert len(result.data) > 0
+
+
+def test_execute_error():
+    result = execute(
+        query="SELECT * FROM table;",
         host="random",
         db="fdb",
         user="sysdba",
@@ -32,12 +52,12 @@ def test_execute():
     assert result.user == "sysdba"
     assert result.returncode == 1
     assert len(result.error) > 0
-    assert result.query == "SELECT * FROM table"
+    assert result.query == "SELECT * FROM table;"
     assert result.params == ()
     assert result.data == []
 
 
-def test_callproc():
+def test_callproc_error():
     result = callproc(
         procname="PROCNAME",
         params=("p1", "p2", "p3"),
