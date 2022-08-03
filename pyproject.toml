@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "firebirdsql-run"
-version = "1.0.0"
+version = "1.0.1"
 description = "Firebirdsql wrapper inspired by subprocess.run"
 authors = ["DeadNews <uhjnnn@gmail.com>"]
 license = "MIT"
