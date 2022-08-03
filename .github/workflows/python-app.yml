@@ -55,8 +55,8 @@ jobs:
         with:
           version: ${{ matrix.firebird-version }}
           firebird_database: test.fdb
-          firebird_user: test_user
-          firebird_password: test_pswd
+          firebird_user: user
+          firebird_password: password
 
       - name: Install poetry
         run: pipx install poetry

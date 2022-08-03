@@ -21,16 +21,17 @@ def test_connection():
 @pytest.mark.docker()
 def test_execute():
     result = execute(
-        query="SELECT * FROM rdb$database;",
+        # query="SELECT * FROM rdb$database;",
+        query="SELECT rdb$relation_name FROM rdb$relations WHERE rdb$view_blr IS NULL AND (rdb$system_flag IS NULL OR rdb$system_flag = 0);",
         host="localhost",
         db="/firebird/data/test.fdb",
-        user="test_user",
-        passwd=getenv("FB_PASSWORD", "test_pswd"),
+        user="user",
+        passwd=getenv("FB_PASSWORD", "password"),
     )
 
     assert result.host == "localhost"
     assert result.db == "/firebird/data/test.fdb"
-    assert result.user == "test_user"
+    assert result.user == "user"
     assert result.returncode == 0
     assert result.error == ""
     # assert result.query == "SELECT * FROM rdb$database;"
