@@ -38,10 +38,10 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 88
+line-length = 99
 
 [tool.isort]
-line_length = 88
+line_length = 99
 profile = "black"
 
 [tool.mypy]
