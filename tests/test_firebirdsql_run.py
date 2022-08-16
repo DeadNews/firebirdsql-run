@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import annotations
+
 from os import getenv
 from socket import gaierror
 
