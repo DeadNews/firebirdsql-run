@@ -44,7 +44,6 @@ repos:
       - id: absolufy-imports
         exclude: ^tests/
 
-
   - repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
@@ -78,6 +77,14 @@ repos:
     rev: 1.2.0rc1
     hooks:
       - id: poetry-check
+      - id: poetry-lock
+        args: [--check]
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.17.1
+    hooks:
+      - id: check-dependabot
+      - id: check-github-workflows
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.18.1
