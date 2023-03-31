@@ -412,19 +412,18 @@ flake8 = ">=3.0,<3.2.0 || >3.2.0"
 
 [[package]]
 name = "flake8-implicit-str-concat"
-version = "0.3.0"
+version = "0.4.0"
 description = "Flake8 plugin to encourage correct string literal concatenation."
 category = "dev"
 optional = false
 python-versions = "~=3.7"
 files = [
-    {file = "flake8_implicit_str_concat-0.3.0-py2.py3-none-any.whl", hash = "sha256:a89ebc50567790fb7b83e032ed4014ae0db70e35d89e269c3323967135023600"},
-    {file = "flake8_implicit_str_concat-0.3.0.tar.gz", hash = "sha256:c0e6ae227e46238e4c87844091f8072892caeccd3bb266576a7d449eadbf53a0"},
+    {file = "flake8_implicit_str_concat-0.4.0-py3-none-any.whl", hash = "sha256:b91805a3e0ff30ae2890830548478af25c79a4a579ec402a6ba3538043dff60c"},
+    {file = "flake8_implicit_str_concat-0.4.0.tar.gz", hash = "sha256:b6acf233afee943dc1802ef4bc242a19f0419fac9943739e235d3f2aaf616361"},
 ]
 
 [package.dependencies]
-attrs = ">=19.3"
-more-itertools = ">=8.0.2,<9"
+more-itertools = {version = ">=8.0.2", markers = "python_version <= \"3.9\""}
 
 [[package]]
 name = "flake8-pie"
@@ -1261,4 +1260,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "6176481ea9b384c8497ff0590e17057faa7e703388f35b0a7d689bcd839fdae5"
+content-hash = "51fbdc9f74703f3d564614d44420dbb357130e13d46f71d861da595b5ac8f98b"
