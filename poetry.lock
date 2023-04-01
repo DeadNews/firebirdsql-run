@@ -503,14 +503,14 @@ tomli = {version = ">=1.2.1", markers = "python_version < \"3.11\""}
 
 [[package]]
 name = "flake8-simplify"
-version = "0.19.3"
+version = "0.20.0"
 description = "flake8 plugin which checks for code that can be simplified"
 category = "dev"
 optional = false
 python-versions = ">=3.6.1"
 files = [
-    {file = "flake8_simplify-0.19.3-py3-none-any.whl", hash = "sha256:1057320e9312d75849541fee822900d27bcad05b2405edc84713affee635629e"},
-    {file = "flake8_simplify-0.19.3.tar.gz", hash = "sha256:2fb083bf5142a98d9c9554755cf2f56f8926eb4a33eae30c0809041b1546879e"},
+    {file = "flake8_simplify-0.20.0-py3-none-any.whl", hash = "sha256:599a47824726c93fadcf0274e569daed45052e38cd906360d9080eaa3bd76d61"},
+    {file = "flake8_simplify-0.20.0.tar.gz", hash = "sha256:7b8796bbea8aed45f56621c389d0556cc86f0afa5d992581139451240a8fbeca"},
 ]
 
 [package.dependencies]
@@ -1260,4 +1260,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "51fbdc9f74703f3d564614d44420dbb357130e13d46f71d861da595b5ac8f98b"
+content-hash = "16edb553568e6d31027961e8289638092743dea2d0ecfa2731cea62010faa2ab"
