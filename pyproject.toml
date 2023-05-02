@@ -54,13 +54,6 @@ warn_unused_ignores = true
 module = ["tests.*"]
 allow_untyped_defs = true
 
-[tool.bandit]
-exclude_dirs = ["tests"]
-skips = [
-  "B404", # Importing subprocess.
-  "B603", # Calling subprocess.Popen without shell=True.
-]
-
 [tool.pytest.ini_options]
 addopts = "--verbose --cov=./src"
 testpaths = ["tests"]
