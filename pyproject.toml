@@ -1,8 +1,12 @@
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
+
 [tool.poetry]
 name = "firebirdsql-run"
-version = "1.0.1"
+version = "0.0.0"
 description = "Firebirdsql wrapper inspired by subprocess.run"
-authors = ["DeadNews <uhjnnn@gmail.com>"]
+authors = ["DeadNews <aurczpbgr@mozmail.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/DeadNews/firebirdsql-run"
@@ -11,59 +15,32 @@ keywords = ["firebird", "sql", "api"]
 classifiers = ["Operating System :: OS Independent", "Topic :: Database"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 firebirdsql = "^1.2.2"
 
 [tool.poetry.group.ci.dependencies]
-bandit = "^1.7.5"
 black = "^23.3.0"
-flake8 = "^6.0.0"
-flake8-bugbear = "^23.3.23"
-flake8-builtins = "^2.1.0"
-flake8-comprehensions = "^3.12.0"
-flake8-implicit-str-concat = "^0.4.0"
-flake8-pie = "^0.16.0"
-flake8-pyproject = "^1.2.3"
-flake8-pytest-style = "^1.7.2"
-flake8-requirements = "^1.7.7"
-flake8-simplify = "^0.20.0"
-flake8-unused-arguments = "^0.0.13"
-flake8-use-pathlib = "^0.3.0"
-isort = "^5.12.0"
 mypy = "^1.2.0"
-pep8-naming = "^0.13.3"
 poethepoet = "^0.19.0"
-safety = "^2.3.5"
-types-requests = "^2.28.11.17"
+ruff = "^0.0.264"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
 pytest-cov = "^4.0.0"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.poe.tasks]
+ruff = "ruff check . --diff --format github"
+black = "black . --check --diff"
+mypy = "mypy ."
+ci.sequence = ["ruff", "black", "mypy"]
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "semver"
 
 [tool.black]
 line-length = 99
-
-[tool.flake8]
-max-line-length = 99
-max-complexity = 18
-show-source = true
-ignore = [
-  "E501",   # Line too long.
-  "PIE786", # Use precise exception handlers.
-  "PIE803", # Use lazy % formatting in logging functions.
-  "W503",   # Line break occurred before a binary operator.
-]
-per-file-ignores = [
-  "tests/*: I900", # Package is not listed as a requirement.
-]
-
-[tool.isort]
-line_length = 99
-profile = "black"
 
 [tool.mypy]
 disallow_untyped_defs = true
@@ -92,12 +69,28 @@ markers = ["docker", "slow"]
 [tool.coverage.report]
 exclude_lines = ["if __name__ == .__main__.:"]
 
-[tool.poe.tasks]
-isort = "isort . --check-only --diff"
-black = "black . --check --diff"
-mypy = "mypy ."
-flake8 = "flake8 ."
-bandit = "bandit -r . -c pyproject.toml"
-safety = "safety check -r pyproject.toml -o bare"
-ci.sequence = ["isort", "black", "mypy", "flake8", "bandit", "safety"]
-pc = "pre-commit run -a"
+[tool.ruff]
+line-length = 99
+select = ["ALL"]
+ignore = [
+  "D203",   # 1 blank line required before class docstring
+  "D212",   # Multi-line docstring summary should start at the first line
+  "E501",   # Line too long
+  "EXE001", # Shebang is present but file is not executable
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["ANN", "D", "S"]
+
+[tool.ruff.flake8-comprehensions]
+allow-dict-calls-with-keyword-arguments = false
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.pylint]
+max-args = 8

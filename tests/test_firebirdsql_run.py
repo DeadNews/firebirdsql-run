@@ -5,7 +5,6 @@ from os import getenv
 from socket import gaierror
 
 import pytest
-
 from firebirdsql_run import callproc, connection, execute
 
 
@@ -34,7 +33,7 @@ def test_execute():
     assert result.db == "/firebird/data/my_database.fdb"
     assert result.user == "my_user"
     assert result.returncode == 0
-    assert result.error == ""
+    assert not result.error
     assert result.query == "SELECT * FROM rdb$database;"
     assert result.params == ()
     assert len(result.data) > 0
