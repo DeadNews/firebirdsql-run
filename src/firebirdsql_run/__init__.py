@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 from datetime import datetime
-from pathlib import Path  # noqa: TCH003
 from socket import getfqdn
-from typing import NamedTuple, Union
+from typing import TYPE_CHECKING, NamedTuple, Union
 
 from firebirdsql import Connection, connect
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
 
 FBTypes = Union[str, float, datetime, None]
 Dataset = list[dict[str, FBTypes]]
@@ -24,6 +27,10 @@ class CompletedTransaction(NamedTuple):
     query: str
     params: tuple
     data: Dataset
+
+
+class ExecuteError(Exception):
+    """Exception raised for execute transaction errors."""
 
 
 def connection(
