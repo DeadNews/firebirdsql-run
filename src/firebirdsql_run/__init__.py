@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 """Firebirdsql wrapper inspired by subprocess.run."""
-from __future__ import annotations
-
 from datetime import datetime
+from pathlib import Path
 from socket import getfqdn
-from typing import TYPE_CHECKING, NamedTuple, Union
+from typing import NamedTuple, Union
 
 from firebirdsql import Connection, connect
-
-if TYPE_CHECKING:
-    from pathlib import Path
-
 
 FBTypes = Union[str, float, datetime, None]
 Dataset = list[dict[str, FBTypes]]
