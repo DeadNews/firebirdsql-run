@@ -56,8 +56,9 @@ def execute(
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
     """
-    Run the transaction described by args.
+    Execute transaction.
 
+    Run the transaction described by args.
     Wait for transaction to complete, then return a CompletedTransaction named tuple.
 
     An existing connection can be used with `use_conn`, it will not be closed after execution.

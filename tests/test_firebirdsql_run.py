@@ -33,7 +33,7 @@ def test_execute():
     assert result.db == "/firebird/data/my_database.fdb"
     assert result.user == "my_user"
     assert result.returncode == 0
-    assert not result.error
+    assert result.error == ""
     assert result.query == "SELECT * FROM rdb$database;"
     assert result.params == ()
     assert len(result.data) > 0
