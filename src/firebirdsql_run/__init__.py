@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""
-Firebirdsql wrapper inspired by subprocess.run
-"""
-from __future__ import annotations
-
+"""Firebirdsql wrapper inspired by subprocess.run."""
 from datetime import datetime
 from pathlib import Path
 from socket import getfqdn
@@ -16,9 +12,7 @@ Dataset = list[dict[str, FBTypes]]
 
 
 class CompletedTransaction(NamedTuple):
-    """
-    The return value from execute(), representing a transaction that has finished.
-    """
+    """The return value from execute(), representing a transaction that has finished."""
 
     host: str
     db: str
@@ -30,6 +24,10 @@ class CompletedTransaction(NamedTuple):
     data: Dataset
 
 
+class ExecuteError(Exception):
+    """Exception raised for execute transaction errors."""
+
+
 def connection(
     db: Path | str,
     host: str = "localhost",
@@ -37,9 +35,7 @@ def connection(
     user: str = "TWUSER",
     passwd: str | None = None,
 ) -> Connection:
-    """
-    Creating a connection to the database.
-    """
+    """Create a connection to the database."""
     return connect(
         host=getfqdn(host),
         database=f"{db}",
@@ -60,6 +56,8 @@ def execute(
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
     """
+    Execute transaction.
+
     Run the transaction described by args.
     Wait for transaction to complete, then return a CompletedTransaction named tuple.
 
@@ -84,12 +82,12 @@ def execute(
 
         if use_conn is None:
             conn.close()
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
         error = f"{e}"
     else:
-        data = [dict(zip(columns, line)) for line in lines]
+        data = [dict(zip(columns, line, strict=True)) for line in lines]
         returncode = 0
         error = ""
 
@@ -115,9 +113,7 @@ def callproc(
     passwd: str | None = None,
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
-    """
-    Execute procedure with params.
-    """
+    """Execute procedure with params."""
     query = f"EXECUTE PROCEDURE {procname} " + ",".join("?" * len(params))
 
     return execute(

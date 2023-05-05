@@ -5,7 +5,6 @@ from os import getenv
 from socket import gaierror
 
 import pytest
-
 from firebirdsql_run import callproc, connection, execute
 
 
