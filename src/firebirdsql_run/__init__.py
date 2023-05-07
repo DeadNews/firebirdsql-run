@@ -3,11 +3,11 @@
 from datetime import datetime
 from pathlib import Path
 from socket import getfqdn
-from typing import NamedTuple, Union
+from typing import NamedTuple
 
 from firebirdsql import Connection, connect
 
-FBTypes = Union[str, float, datetime, None]
+FBTypes = str | float | datetime | None
 Dataset = list[dict[str, FBTypes]]
 
 

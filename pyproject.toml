@@ -22,7 +22,7 @@ firebirdsql = "^1.2.2"
 black = "^23.3.0"
 mypy = "^1.2.0"
 poethepoet = "^0.20.0"
-ruff = "^0.0.264"
+ruff = "^0.0.265"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
