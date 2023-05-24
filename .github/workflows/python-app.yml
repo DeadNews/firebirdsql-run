@@ -1,4 +1,4 @@
-name: CI/CD
+name: Main
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: poetry
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           poetry env use ${{ env.PYTHON_VERSION }}
           poetry install --only main,ci
@@ -65,7 +65,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: poetry
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           poetry env use ${{ matrix.python-version }}
           poetry install --only main,test
@@ -100,4 +100,4 @@ jobs:
         run: poetry build
 
       - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@release/v1.8
