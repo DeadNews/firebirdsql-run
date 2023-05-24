@@ -11,12 +11,9 @@ on:
 permissions:
   contents: read
 
-env:
-  PYTHON_VERSION: "3.11"
-
 jobs:
-  code-quality:
-    name: Check code quality
+  lint:
+    name: Lint code
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,19 +23,16 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
           cache: poetry
 
       - name: Install deps
-        run: |
-          poetry env use ${{ env.PYTHON_VERSION }}
-          poetry install --only main,ci
+        run: poetry install
 
-      - name: Check code quality
+      - name: Lint code
         run: poetry run poe ci
 
-  run-tests:
-    name: Run tests
+  tests:
+    name: Tests
     strategy:
       fail-fast: false
       matrix:
@@ -66,21 +60,19 @@ jobs:
           cache: poetry
 
       - name: Install deps
-        run: |
-          poetry env use ${{ matrix.python-version }}
-          poetry install --only main,test
+        run: poetry install
 
       - name: Run tests
         run: poetry run pytest --cov-report=xml
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == env.PYTHON_VERSION && matrix.firebird-version == '2.5-sc'
+        if: matrix.os == 'ubuntu-latest' && matrix.firebird-version == '2.5-sc' && matrix.python-version == '3.11'
         uses: codecov/codecov-action@v3
 
   publish-pypi:
-    name: Build and release to PyPI
+    name: Release to PyPI
     if: github.event_name == 'release' && github.event.action == 'created'
-    needs: [code-quality, run-tests]
+    needs: [lint, tests]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -93,11 +85,9 @@ jobs:
           pipx inject poetry poetry-dynamic-versioning[plugin]
 
       - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Build package
         run: poetry build
 
       - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1.8
+        uses: pypa/gh-action-pypi-publish@v1.8.6
