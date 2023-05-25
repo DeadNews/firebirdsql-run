@@ -3,7 +3,7 @@
 > [Firebirdsql](https://github.com/nakagami/pyfirebirdsql/) wrapper inspired by [subprocess.run](https://docs.python.org/3/library/subprocess.html#subprocess.run)
 
 [![PyPI version](https://img.shields.io/pypi/v/firebirdsql-run)](https://pypi.org/project/firebirdsql-run)
-[![CI/CD](https://github.com/DeadNews/firebirdsql-run/actions/workflows/python-app.yml/badge.svg)](https://github.com/DeadNews/firebirdsql-run/actions/workflows/python-app.yml)
+[![Main](https://github.com/DeadNews/firebirdsql-run/actions/workflows/main.yml/badge.svg)](https://github.com/DeadNews/firebirdsql-run/actions/workflows/main.yml)
 [![pre-commit.ci](https://results.pre-commit.ci/badge/github/DeadNews/firebirdsql-run/main.svg)](https://results.pre-commit.ci/latest/github/DeadNews/firebirdsql-run/main)
 [![codecov](https://codecov.io/gh/DeadNews/firebirdsql-run/branch/main/graph/badge.svg?token=OCZDZIYPMC)](https://codecov.io/gh/DeadNews/firebirdsql-run)
 
@@ -28,7 +28,6 @@ result = execute(
     host="localhost",
     db="fdb",
     user="sysdba",
-    passwd=getenv("FB_PASSWORD"),
 )
 
 if result.returncode != 0:
@@ -37,7 +36,7 @@ else:
     log.info(result)
 ```
 
-- `Info`
+### Info result example
 
 ```py
 CompletedTransaction(
@@ -55,7 +54,7 @@ CompletedTransaction(
 )
 ```
 
-- `Error`
+### Error result example
 
 ```py
 CompletedTransaction(
@@ -73,12 +72,7 @@ CompletedTransaction(
 ### Reuse connection
 
 ```py
-conn = connection(
-    host="localhost",
-    db="fdb",
-    user="sysdba",
-    passwd=getenv("FB_PASSWORD"),
-)
+conn = connection(host="localhost", db="fdb", user="sysdba")
 
 execute(use_conn=conn, query="SELECT * FROM TABLE")
 ...
@@ -87,3 +81,11 @@ callproc(use_conn=conn, procname="PROCNAME", params=(...))
 
 conn.close()
 ```
+
+## Env variables
+
+```ini
+FIREBIRD_KEY=
+```
+
+The `FIREBIRD_KEY` environment variable can be overridden with the optional function argument `passwd`.
