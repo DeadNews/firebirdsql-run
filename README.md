@@ -15,12 +15,14 @@ pip install firebirdsql-run
 
 ## Examples
 
-### Execute
+### Table
 
 | maker | model | type |
 | ----- | ----- | ---- |
 | B     | 1121  | PC   |
 | A     | 1232  | PC   |
+
+### Execute
 
 ```py
 result = execute(
