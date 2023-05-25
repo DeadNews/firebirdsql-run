@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Firebirdsql wrapper inspired by subprocess.run."""
 from datetime import datetime
+from os import getenv
 from pathlib import Path
 from socket import getfqdn
 from typing import NamedTuple
@@ -41,7 +42,7 @@ def connection(
         database=f"{db}",
         port=port,
         user=user,
-        password=passwd,
+        password=passwd or getenv("FIREBIRD_KEY"),
     )
 
 

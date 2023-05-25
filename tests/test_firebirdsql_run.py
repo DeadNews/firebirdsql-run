@@ -15,7 +15,7 @@ def test_connection():
             db="fdb",
             port=3050,
             user="sysdba",
-            passwd=getenv("FB_PASSWD", "masterkey"),
+            passwd=getenv("FIREBIRD_KEY", "masterkey"),
         )
 
 
@@ -26,7 +26,7 @@ def test_execute():
         host="localhost",
         db="/firebird/data/my_database.fdb",
         user="my_user",
-        passwd=getenv("FB_PASSWD", "my_password"),
+        passwd=getenv("FIREBIRD_KEY", "my_password"),
     )
 
     assert result.host == "localhost"
@@ -45,7 +45,7 @@ def test_execute_error():
         host="random",
         db="fdb",
         user="sysdba",
-        passwd=getenv("FB_PASSWD", "masterkey"),
+        passwd=getenv("FIREBIRD_KEY", "masterkey"),
     )
 
     assert result.host == "random"
@@ -65,7 +65,7 @@ def test_callproc_error():
         host="random",
         db="fdb",
         user="sysdba",
-        passwd=getenv("FB_PASSWD", "masterkey"),
+        passwd=getenv("FIREBIRD_KEY", "masterkey"),
     )
 
     assert result.host == "random"
