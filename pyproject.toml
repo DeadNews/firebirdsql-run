@@ -18,7 +18,7 @@ classifiers = ["Operating System :: OS Independent", "Topic :: Database"]
 python = "^3.10"
 firebirdsql = "^1.2.2"
 
-[tool.poetry.group.ci.dependencies]
+[tool.poetry.group.lint.dependencies]
 black = "^23.3.0"
 mypy = "^1.2.0"
 poethepoet = "^0.20.0"
