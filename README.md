@@ -90,4 +90,4 @@ conn.close()
 FIREBIRD_KEY=
 ```
 
-The `FIREBIRD_KEY` environment variable can be overridden with the optional function argument `passwd`.
+The `FIREBIRD_KEY` environment variable can be overridden with the function argument `passwd`.

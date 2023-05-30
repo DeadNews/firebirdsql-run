@@ -1,12 +1,14 @@
-name: Dependency Review
+name: Deps Review
 
-on: [pull_request]
+on:
+  pull_request:
 
 permissions:
   contents: read
 
 jobs:
-  dependency-review:
+  deps-review:
+    name: Deps Review
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
