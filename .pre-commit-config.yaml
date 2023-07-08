@@ -17,12 +17,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.0-alpha.9-for-vscode
+    rev: v3.0.0
     hooks:
       - id: prettier
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.15.9
+    rev: v1.15.10
     hooks:
       - id: typos
 
@@ -33,7 +33,7 @@ repos:
       - id: check-renovate
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.275
+    rev: v0.0.277
     hooks:
       - id: ruff
         args: [--fix]
