@@ -18,3 +18,7 @@ class CompletedTransaction(NamedTuple):
     query: str
     params: tuple
     data: Dataset
+
+
+class ExecuteError(Exception):
+    """Exception raised for execute transaction errors."""

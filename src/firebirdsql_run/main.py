@@ -9,10 +9,6 @@ from firebirdsql_run.type import CompletedTransaction
 from firebirdsql_run.util import get_env
 
 
-class ExecuteError(Exception):
-    """Exception raised for execute transaction errors."""
-
-
 def connection(
     db: Path | str,
     host: str = "localhost",
@@ -60,13 +56,10 @@ def execute(
         cur = conn.cursor()
 
         cur.execute(query=query, params=params)
+        conn.commit()
 
         lines = cur.fetchall()
         columns = [f"{col[0]}".lower() for col in cur.description]
-        conn.commit()
-
-        if use_conn is None:
-            conn.close()
     except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
@@ -75,6 +68,9 @@ def execute(
         data = [dict(zip(columns, line, strict=True)) for line in lines]
         returncode = 0
         error = ""
+    finally:
+        if conn_success and use_conn is None:
+            conn.close()
 
     return CompletedTransaction(
         host=conn.hostname if conn_success else host,
