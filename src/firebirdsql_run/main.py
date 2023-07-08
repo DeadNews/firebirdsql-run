@@ -54,12 +54,12 @@ def execute(
         conn_success = True
 
         cur = conn.cursor()
-
         cur.execute(query=query, params=params)
-        conn.commit()
 
         lines = cur.fetchall()
         columns = [f"{col[0]}".lower() for col in cur.description]
+
+        conn.commit()
     except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
