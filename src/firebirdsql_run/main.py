@@ -58,8 +58,6 @@ def execute(
 
         lines = cur.fetchall()
         columns = [f"{col[0]}".lower() for col in cur.description]
-
-        conn.commit()
     except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
@@ -69,8 +67,10 @@ def execute(
         returncode = 0
         error = ""
     finally:
-        if conn_success and use_conn is None:
-            conn.close()
+        if conn_success:
+            conn.commit()
+            if use_conn is None:
+                conn.close()
 
     return CompletedTransaction(
         host=conn.hostname if conn_success else host,
