@@ -11,7 +11,7 @@ from firebirdsql_run.util import get_env
 
 def connection(
     db: Path | str,
-    host: str = "localhost",
+    host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
     passwd: str | None = None,
@@ -30,7 +30,7 @@ def execute(
     query: str,
     params: tuple = (),
     db: Path | str = "",
-    host: str = "localhost",
+    host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
     passwd: str | None = None,
@@ -88,7 +88,7 @@ def callproc(
     procname: str,
     params: tuple = (),
     db: Path | str = "",
-    host: str = "localhost",
+    host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
     passwd: str | None = None,
