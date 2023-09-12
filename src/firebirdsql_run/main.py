@@ -14,9 +14,22 @@ def connection(
     host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
-    passwd: str | None = None,
+    passwd: str = "",
 ) -> Connection:
-    """Create a connection to the database."""
+    """
+    Create a connection to a Firebird database using the firebirdsql library.
+
+    Args:
+        db (Path | str): The path to the Firebird database file.
+        host (str, optional): The host address of the Firebird server. Defaults to "127.0.0.1".
+        port (int, optional): The port number of the Firebird server. Defaults to 3050.
+        user (str, optional): The username for authentication. Defaults to "TWUSER".
+        passwd (str, optional): The password for authentication.
+            If not provided, it retrieves the password from the FIREBIRD_KEY environment variable.
+
+    Returns:
+        Connection: A Connection object representing the connection to the Firebird database.
+    """
     return connect(
         host=getfqdn(host),
         database=f"{db}",
@@ -27,22 +40,31 @@ def connection(
 
 
 def execute(
+    db: Path | str,
     query: str,
     params: tuple = (),
-    db: Path | str = "",
     host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
-    passwd: str | None = None,
+    passwd: str = "",
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
     """
-    Execute transaction.
+    Execute a transaction in a Firebird database.
 
-    Run the transaction described by args.
-    Wait for transaction to complete, then return a CompletedTransaction named tuple.
+    Args:
+        db (Path | str): The path to the Firebird database file.
+        query (str): The SQL query to be executed.
+        params (tuple, optional): Optional parameters to be used in the query. Defaults to ().
+        host (str, optional): The host address of the Firebird server. Defaults to "127.0.0.1".
+        port (int, optional): The port number of the Firebird server. Defaults to 3050.
+        user (str, optional): The username for authentication. Defaults to "TWUSER".
+        passwd (str, optional): The password for authentication.
+            If not provided, it retrieves the password from the FIREBIRD_KEY environment variable.
+        use_conn (Connection | None, optional): The existing connection to be used for the transaction.
 
-    An existing connection can be used with `use_conn`, it will not be closed after execution.
+    Returns:
+        CompletedTransaction: A named tuple containing information about the executed transaction.
     """
     conn_success = False
     try:
@@ -85,16 +107,32 @@ def execute(
 
 
 def callproc(
+    db: Path | str,
     procname: str,
     params: tuple = (),
-    db: Path | str = "",
     host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
-    passwd: str | None = None,
+    passwd: str = "",
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
-    """Execute procedure with params."""
+    """
+    Execute a stored procedure in a Firebird database.
+
+    Args:
+        db (Path | str): The path to the Firebird database file.
+        procname (str): The name of the stored procedure to be executed.
+        params (tuple, optional): Optional parameters to be passed to the stored procedure. Defaults to ().
+        host (str, optional): The host address of the Firebird server. Defaults to "127.0.0.1".
+        port (int, optional): The port number of the Firebird server. Defaults to 3050.
+        user (str, optional): The username for authentication. Defaults to "TWUSER".
+        passwd (str, optional): The password for authentication.
+            If not provided, it retrieves the password from the FIREBIRD_KEY environment variable.
+        use_conn (Connection | None, optional): The existing connection to be used for the transaction.
+
+    Returns:
+        CompletedTransaction: A named tuple containing information about the executed transaction.
+    """
     query = f"EXECUTE PROCEDURE {procname} " + ",".join("?" * len(params))
 
     return execute(

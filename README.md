@@ -15,39 +15,41 @@ pip install firebirdsql-run
 
 ## Examples
 
-### Table
+- Execute a transaction
+
+```py
+result = execute(query="SELECT * FROM table", db="database")
+print(result.data)  # Output: List of dictionaries containing the query results
+```
+
+- Execute a transaction with custom parameters and an existing connection
+
+```py
+conn = connection(db="/path/to/database.fdb")
+result = execute("INSERT INTO customers (name, age) VALUES (?, ?)", params=("John Doe", 25), use_conn=conn)
+print(result.returncode)  # Output: 0 (success)
+conn.close()
+```
+
+## Representation of a completed transaction
+
+- Table
 
 | maker | model | type |
 | ----- | ----- | ---- |
 | B     | 1121  | PC   |
 | A     | 1232  | PC   |
 
-### Execute
-
-```py
-result = execute(
-    query="SELECT * FROM TABLE",
-    host="localhost",
-    db="fdb",
-    user="sysdba",
-)
-
-if result.returncode != 0:
-    log.error(result)
-else:
-    log.info(result)
-```
-
-### Info result example
+- Success example
 
 ```py
 CompletedTransaction(
-    host="localhost",
-    db="fdb",
-    user="sysdba",
+    host="127.0.0.1",
+    db="database",
+    user="TWUSER",
     returncode=0,
     error="",
-    query="SELECT * FROM TABLE",
+    query="SELECT * FROM table",
     params=(),
     data=[
         {"maker": "B", "model": 1121, "type": "PC"},
@@ -56,32 +58,19 @@ CompletedTransaction(
 )
 ```
 
-### Error result example
+- Error example
 
 ```py
 CompletedTransaction(
-    host="localhost",
-    db="fdb",
-    user="sysdba",
+    host="127.0.0.1",
+    db="database",
+    user="TWUSER",
     returncode=1,
-    error="Dynamic SQL Error\nSQL error code = -204\nTable unknown\nTABLE\nAt line 1, column 15\n",
-    query="SELECT * FROM TABLE",
+    error="Dynamic SQL Error\nSQL error code = -204\nTable unknown\ntable\nAt line 1, column 15\n",
+    query="SELECT * FROM table",
     params=(),
     data=[],
 )
-```
-
-### Reuse connection
-
-```py
-conn = connection(host="localhost", db="fdb", user="sysdba")
-
-execute(use_conn=conn, query="SELECT * FROM TABLE")
-...
-callproc(use_conn=conn, procname="PROCNAME", params=(...))
-...
-
-conn.close()
 ```
 
 ## Env variables
