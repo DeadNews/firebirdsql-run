@@ -17,23 +17,23 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.0.2
+    rev: v3.0.3
     hooks:
       - id: prettier
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.16.8
+    rev: v1.16.11
     hooks:
       - id: typos
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.26.1
+    rev: 0.26.3
     hooks:
       - id: check-github-workflows
       - id: check-renovate
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.286
+    rev: v0.0.289
     hooks:
       - id: ruff
         args: [--fix]
@@ -49,7 +49,7 @@ repos:
       - id: mypy
 
   - repo: https://github.com/python-poetry/poetry
-    rev: 1.6.1
+    rev: 1.6.0
     hooks:
       - id: poetry-check
       - id: poetry-lock
