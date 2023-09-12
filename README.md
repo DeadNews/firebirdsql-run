@@ -26,7 +26,7 @@ print(result.data)  # Output: List of dictionaries containing the query results
 
 ```py
 conn = connection(db="/path/to/database.fdb")
-result = execute("INSERT INTO customers (name, age) VALUES (?, ?)", params=("John Doe", 25), use_conn=conn)
+result = execute("INSERT INTO customers (name, age) VALUES (?, ?)", params=("John", 25), use_conn=conn)
 print(result.returncode)  # Output: 0 (success)
 conn.close()
 ```
