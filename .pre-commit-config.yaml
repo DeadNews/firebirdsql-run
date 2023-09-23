@@ -22,7 +22,7 @@ repos:
       - id: prettier
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.16.11
+    rev: v1.16.13
     hooks:
       - id: typos
 
@@ -33,7 +33,7 @@ repos:
       - id: check-renovate
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.289
+    rev: v0.0.291
     hooks:
       - id: ruff
         args: [--fix]
@@ -49,7 +49,7 @@ repos:
       - id: mypy
 
   - repo: https://github.com/python-poetry/poetry
-    rev: 1.6.0
+    rev: 1.6.1
     hooks:
       - id: poetry-check
       - id: poetry-lock
