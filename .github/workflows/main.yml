@@ -16,7 +16,7 @@ jobs:
     name: Lint code
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install poetry
         run: pipx install poetry
@@ -41,7 +41,7 @@ jobs:
         firebird-version: ["2.5-sc", "latest"]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup firebird container
         uses: juarezr/firebirdsql-github-action@8b51a05dfaf056826462f8ef8ef0f2e4470fda7a # v1.2.0
@@ -77,7 +77,7 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install poetry
         run: |
