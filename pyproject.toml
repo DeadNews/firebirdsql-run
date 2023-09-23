@@ -21,7 +21,7 @@ firebirdsql = "^1.2.2"
 [tool.poetry.group.lint.dependencies]
 black = "^23.9.1"
 mypy = "^1.5.1"
-poethepoet = "^0.22.1"
+poethepoet = "^0.23.0"
 ruff = "^0.0.291"
 
 [tool.poetry.group.test.dependencies]
