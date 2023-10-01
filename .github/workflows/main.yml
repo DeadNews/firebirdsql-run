@@ -37,7 +37,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.10", "3.11", "3.12.0-rc.3"]
         firebird-version: ["2.5-sc", "latest"]
     runs-on: ${{ matrix.os }}
     steps:
