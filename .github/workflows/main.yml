@@ -37,7 +37,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.10", "3.11", "3.12"]
         firebird-version: ["2.5-sc", "latest"]
     runs-on: ${{ matrix.os }}
     steps:
@@ -73,9 +73,10 @@ jobs:
     name: Release to PyPI
     if: github.event_name == 'release' && github.event.action == 'created'
     needs: [lint, tests]
-    runs-on: ubuntu-latest
     permissions:
       id-token: write
+    environment: pypi
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
