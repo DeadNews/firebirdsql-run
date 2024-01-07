@@ -35,8 +35,8 @@ style = "semver"
 [tool.poe.tasks]
 mypy = "mypy ."
 ruff = "ruff check ."
-fmt = "ruff format ."
-lint.sequence = ["ruff", "fmt", "mypy"]
+ruff-fmt = "ruff format ."
+lint.sequence = ["ruff", "ruff-fmt", "mypy"]
 
 [tool.poe.tasks.test]
 cmd = "pytest --cov-report=xml"
@@ -55,7 +55,7 @@ exclude_lines = [
 
 [tool.mypy]
 disallow_untyped_defs = true
-follow_imports = "silent"
+follow_imports = "normal"
 ignore_missing_imports = true
 show_column_numbers = true
 show_error_codes = true
@@ -63,11 +63,11 @@ warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
 module = ["tests.*"]
-allow_untyped_defs = true
+disallow_untyped_defs = false
 
 [tool.ruff]
 line-length = 99
-target-version = "py310" # until poetry v2
+target-version = "py310" # Until Poetry v2
 
 [tool.ruff.format]
 line-ending = "lf"
@@ -100,4 +100,4 @@ ban-relative-imports = "all"
 convention = "google"
 
 [tool.ruff.pycodestyle]
-max-doc-length = 110
+max-doc-length = 129
