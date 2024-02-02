@@ -82,7 +82,7 @@ ignore = [
   "D212",    # Multi-line docstring summary should start at the first line
   "FBT001",  # Boolean positional arg in function definition
   "FBT002",  # Boolean default value in function definition
-  "ISC001",  # Checks for implicitly concatenated strings on a single line.
+  "ISC001",  # Checks for implicitly concatenated strings on a single line
   "PLR0913", # Too many arguments to function call
 ]
 
