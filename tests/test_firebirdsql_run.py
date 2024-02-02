@@ -45,7 +45,6 @@ def test_reuse_connection():
         user="my_user",
         passwd=getenv("FIREBIRD_KEY", "my_password"),
     )
-
     result = execute(
         query="SELECT * FROM rdb$database;",
         use_conn=conn,
