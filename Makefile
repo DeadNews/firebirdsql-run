@@ -11,7 +11,7 @@ pc-install:
 update-latest:
 	poetry up --latest
 
-checks: pc-run lint pyright
+checks: pc-run install lint pyright
 
 pc-run:
 	pre-commit run -a
