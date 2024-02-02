@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Types."""
 from datetime import datetime
 from typing import NamedTuple

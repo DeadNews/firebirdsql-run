@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Firebirdsql wrapper inspired by subprocess.run."""
 from pathlib import Path
 from socket import getfqdn

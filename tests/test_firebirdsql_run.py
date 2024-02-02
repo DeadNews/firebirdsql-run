@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from os import getenv
 from socket import gaierror
 
