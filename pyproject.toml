@@ -86,18 +86,18 @@ ignore = [
   "PLR0913", # Too many arguments to function call
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*" = ["ANN", "D", "PLC1901", "PLR2004", "S"]
 
-[tool.ruff.flake8-comprehensions]
+[tool.ruff.lint.flake8-comprehensions]
 allow-dict-calls-with-keyword-arguments = false
 
-[tool.ruff.flake8-tidy-imports]
+[tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.pycodestyle]
+[tool.ruff.lint.pycodestyle]
 max-doc-length = 129
