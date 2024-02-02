@@ -21,6 +21,3 @@ lint:
 
 test:
 	poetry run pytest -m 'not docker'
-
-pyright:
-	poetry run poe pyright

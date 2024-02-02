@@ -67,38 +67,37 @@ def execute(
     Returns:
         CompletedTransaction: A named tuple containing information about the executed transaction.
     """
-    conn_success = False
+    conn: Connection | None = None
     try:
         conn = (
             connection(host=host, db=db, port=port, user=user, passwd=passwd)
             if use_conn is None
             else use_conn
         )
-        conn_success = True
-
         cur = conn.cursor()
         cur.execute(query=query, params=params)
 
         lines = cur.fetchall()
-        columns = [f"{col[0]}".lower() for col in cur.description]
+        descr = cur.description
+        columns = [] if descr is None else [f"{col[0]}".lower() for col in descr]
     except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
         error = f"{e}"
     else:
-        data = [dict(zip(columns, line, strict=True)) for line in lines]
+        data = [] if lines is None else [dict(zip(columns, line, strict=True)) for line in lines]
         returncode = 0
         error = ""
     finally:
-        if conn_success:
+        if conn is not None:
             conn.commit()
             if use_conn is None:
                 conn.close()
 
     return CompletedTransaction(
-        host=conn.hostname if conn_success else host,
-        db=conn.filename if conn_success else db,
-        user=conn.user if conn_success else user,
+        host=host if conn is None else conn.hostname,
+        db=f"{db}" if conn is None else f"{conn.filename}",
+        user=user if conn is None else f"{conn.user}",
         returncode=returncode,
         error=error,
         query=query,
