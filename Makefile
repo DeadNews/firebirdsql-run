@@ -11,7 +11,7 @@ pc-install:
 update-latest:
 	poetry up --latest
 
-checks: pc-run lint
+checks: pc-run lint pyright
 
 pc-run:
 	pre-commit run -a
@@ -21,3 +21,6 @@ lint:
 
 test:
 	poetry run pytest -m 'not docker'
+
+pyright:
+	poetry run poe pyright
