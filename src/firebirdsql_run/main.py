@@ -40,9 +40,9 @@ def connection(
 
 
 def execute(
-    db: Path | str,
     query: str,
     params: tuple = (),
+    db: Path | str = "",
     host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
@@ -53,15 +53,16 @@ def execute(
     Execute a transaction in a Firebird database.
 
     Args:
-        db (Path | str): The path to the Firebird database file.
         query (str): The SQL query to be executed.
         params (tuple, optional): Optional parameters to be used in the query. Defaults to ().
+        db (Path | str, optional): The path to the Firebird database file. Defaults to "".
         host (str, optional): The host address of the Firebird server. Defaults to "127.0.0.1".
         port (int, optional): The port number of the Firebird server. Defaults to 3050.
         user (str, optional): The username for authentication. Defaults to "TWUSER".
         passwd (str, optional): The password for authentication.
             If not provided, it retrieves the password from the FIREBIRD_KEY environment variable.
         use_conn (Connection | None, optional): The existing connection to be used for the transaction.
+            Takes precedence over the default connection settings.
 
     Returns:
         CompletedTransaction: A named tuple containing information about the executed transaction.
@@ -107,9 +108,9 @@ def execute(
 
 
 def callproc(
-    db: Path | str,
     procname: str,
     params: tuple = (),
+    db: Path | str = "",
     host: str = "127.0.0.1",
     port: int = 3050,
     user: str = "TWUSER",
@@ -120,15 +121,16 @@ def callproc(
     Execute a stored procedure in a Firebird database.
 
     Args:
-        db (Path | str): The path to the Firebird database file.
         procname (str): The name of the stored procedure to be executed.
         params (tuple, optional): Optional parameters to be passed to the stored procedure. Defaults to ().
+        db (Path | str, optional): The path to the Firebird database file. Defaults to "".
         host (str, optional): The host address of the Firebird server. Defaults to "127.0.0.1".
         port (int, optional): The port number of the Firebird server. Defaults to 3050.
         user (str, optional): The username for authentication. Defaults to "TWUSER".
         passwd (str, optional): The password for authentication.
             If not provided, it retrieves the password from the FIREBIRD_KEY environment variable.
         use_conn (Connection | None, optional): The existing connection to be used for the transaction.
+            Takes precedence over the default connection settings.
 
     Returns:
         CompletedTransaction: A named tuple containing information about the executed transaction.
