@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Utils."""
 from os import getenv
 
