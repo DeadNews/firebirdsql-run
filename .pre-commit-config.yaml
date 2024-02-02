@@ -58,5 +58,4 @@ repos:
     rev: 1.7.1
     hooks:
       - id: poetry-check
-      - id: poetry-lock
-        args: [--check]
+        args: [--lock]
