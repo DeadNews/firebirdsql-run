@@ -78,12 +78,12 @@ def execute(
 
         lines = cur.fetchall()
         descr = cur.description
-        columns = [] if descr is None else [f"{col[0]}".lower() for col in descr]
     except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
         error = f"{e}"
     else:
+        columns = [] if descr is None else [f"{col[0]}".lower() for col in descr]
         data = [] if lines is None else [dict(zip(columns, line, strict=True)) for line in lines]
         returncode = 0
         error = ""
