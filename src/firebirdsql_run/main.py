@@ -2,7 +2,7 @@
 from pathlib import Path
 from socket import getfqdn
 
-from firebird.driver import Connection, connect
+from firebird.driver import Connection, connect, driver_config
 
 from firebirdsql_run.type import CompletedTransaction
 from firebirdsql_run.util import get_env
@@ -29,11 +29,12 @@ def connection(
     Returns:
         Connection: A Connection object representing the connection to the Firebird database.
     """
-    return connect(
-        database=f"{getfqdn(host)}:{port}:{db}",
-        user=user,
-        password=passwd or get_env("FIREBIRD_KEY"),
-    )
+    driver_config.server_defaults.user.value = user
+    driver_config.server_defaults.password.value = passwd or get_env("FIREBIRD_KEY")
+    driver_config.server_defaults.port.value = f"{port}"
+    driver_config.server_defaults.host.value = getfqdn(host)
+
+    return connect(database=f"{db}")
 
 
 def execute(
