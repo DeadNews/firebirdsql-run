@@ -30,18 +30,20 @@ def connection(
         Connection: A Connection object representing the connection to the Firebird database.
     """
     # Register Firebird server
-    srv_cfg = f"""[{getfqdn(host)}]
+    srv_cfg = f"""[server.{getfqdn(host)}]
     host = {getfqdn(host)}
     port = {port}
     user = {user}
     password = {passwd or get_env("FIREBIRD_KEY")}
     """
-    driver_config.register_server(getfqdn(host), srv_cfg)
+    driver_config.register_server(f"server.{getfqdn(host)}", srv_cfg)
 
     # Register database
     db_cfg = f"""[{db}]
     server = {getfqdn(host)}
     database = {db}
+    user = {user}
+    password = {passwd or get_env("FIREBIRD_KEY")}
     """
     driver_config.register_database(f"{db}", db_cfg)
 
