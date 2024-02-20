@@ -2,7 +2,7 @@
 from pathlib import Path
 from socket import getfqdn
 
-from firebirdsql import Connection, connect
+from firebird.driver import Connection, connect
 
 from firebirdsql_run.type import CompletedTransaction
 from firebirdsql_run.util import get_env
@@ -30,9 +30,7 @@ def connection(
         Connection: A Connection object representing the connection to the Firebird database.
     """
     return connect(
-        host=getfqdn(host),
-        database=f"{db}",
-        port=port,
+        database=f"{getfqdn(host)}:{port}:{db}",
         user=user,
         password=passwd or get_env("FIREBIRD_KEY"),
     )
@@ -74,7 +72,7 @@ def execute(
             else use_conn
         )
         cur = conn.cursor()
-        cur.execute(query=query, params=params)
+        cur.execute(operation=query, parameters=params)
 
         lines = cur.fetchall()
         descr = cur.description
@@ -94,9 +92,9 @@ def execute(
                 conn.close()
 
     return CompletedTransaction(
-        host=host if conn is None else conn.hostname,
-        db=f"{db}" if conn is None else f"{conn.filename}",
-        user=user if conn is None else f"{conn.user}",
+        host=host,
+        db=f"{db}",
+        user=user,
         returncode=returncode,
         error=error,
         query=query,
