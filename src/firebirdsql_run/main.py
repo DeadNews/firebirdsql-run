@@ -40,7 +40,7 @@ def connection(
 
     # Register database
     db_cfg = f"""[{db}]
-    server = {getfqdn(host)}
+    server = server.{getfqdn(host)}
     database = {db}
     user = {user}
     password = {passwd or get_env("FIREBIRD_KEY")}
