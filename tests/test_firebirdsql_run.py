@@ -19,13 +19,13 @@ def test_connection_error():
 def test_execute():
     result = execute(
         query="SELECT * FROM rdb$database;",
-        host="localhost",
+        host="127.0.0.1",
         db="/firebird/data/my_database.fdb",
         user="my_user",
         passwd=getenv("FIREBIRD_KEY", "my_password"),
     )
 
-    assert result.host == "localhost"
+    assert result.host == "127.0.0.1"
     assert result.db == "/firebird/data/my_database.fdb"
     assert result.user == "my_user"
     assert result.returncode == 0
@@ -38,7 +38,7 @@ def test_execute():
 @pytest.mark.docker()
 def test_reuse_connection():
     conn = connection(
-        host="localhost",
+        host="127.0.0.1",
         db="/firebird/data/my_database.fdb",
         user="my_user",
         passwd=getenv("FIREBIRD_KEY", "my_password"),
@@ -48,7 +48,7 @@ def test_reuse_connection():
         use_conn=conn,
     )
 
-    assert result.host == "localhost"
+    assert result.host == "127.0.0.1"
     assert result.db == "/firebird/data/my_database.fdb"
     assert result.user == "my_user"
     assert result.returncode == 0
