@@ -15,8 +15,7 @@ def connection(
     user: str = "TWUSER",
     passwd: str = "",
 ) -> Connection:
-    """
-    Create a connection to a Firebird database using the firebirdsql library.
+    """Create a connection to a Firebird database using the firebirdsql library.
 
     Args:
         db (Path | str): The path to the Firebird database file.
@@ -48,8 +47,7 @@ def execute(
     passwd: str = "",
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
-    """
-    Execute a transaction in a Firebird database.
+    """Execute a transaction in a Firebird database.
 
     Args:
         query (str): The SQL query to be executed.
@@ -115,8 +113,7 @@ def callproc(
     passwd: str = "",
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
-    """
-    Execute a stored procedure in a Firebird database.
+    """Execute a stored procedure in a Firebird database.
 
     Args:
         procname (str): The name of the stored procedure to be executed.

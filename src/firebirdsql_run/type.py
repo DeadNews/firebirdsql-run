@@ -7,8 +7,7 @@ Dataset = list[dict[str, FBTypes]]
 
 
 class CompletedTransaction(NamedTuple):
-    """
-    Represents a completed transaction in a database.
+    """Represents a completed transaction in a database.
 
     Attributes:
         host (str): The host where the transaction was executed.

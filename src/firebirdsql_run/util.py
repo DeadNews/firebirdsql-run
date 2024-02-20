@@ -7,8 +7,7 @@ class GetEnvError(Exception):
 
 
 def get_env(variable: str) -> str:
-    """
-    Get the value of an environment variable.
+    """Get the value of an environment variable.
 
     Args:
         variable (str): The name of the environment variable to retrieve.
