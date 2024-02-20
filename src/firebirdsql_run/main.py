@@ -29,10 +29,21 @@ def connection(
     Returns:
         Connection: A Connection object representing the connection to the Firebird database.
     """
-    driver_config.server_defaults.user.value = user
-    driver_config.server_defaults.password.value = passwd or get_env("FIREBIRD_KEY")
-    driver_config.server_defaults.port.value = f"{port}"
-    driver_config.server_defaults.host.value = getfqdn(host)
+    # Register Firebird server
+    srv_cfg = f"""[{getfqdn(host)}]
+    host = {getfqdn(host)}
+    port = {port}
+    user = {user}
+    password = {passwd or get_env("FIREBIRD_KEY")}
+    """
+    driver_config.register_server(getfqdn(host), srv_cfg)
+
+    # Register database
+    db_cfg = f"""[{db}]
+    server = {getfqdn(host)}
+    database = {db}
+    """
+    driver_config.register_database(f"{db}", db_cfg)
 
     return connect(database=f"{db}")
 
