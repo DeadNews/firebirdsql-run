@@ -26,7 +26,7 @@ class CompletedTransaction(NamedTuple):
         user (str): The user who executed the transaction.
         access (str): The access mode used for the transaction.
         returncode (int): The return code of the transaction execution.
-        exception (str): The error message, if any encountered during the transaction execution.
+        exception (str): The exception message if the transaction failed.
         query (str): The SQL query executed in the transaction.
         params (tuple): The parameters used in the SQL query.
         data (Dataset): The data returned by the transaction, represented as a list of dictionaries.

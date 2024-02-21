@@ -25,7 +25,6 @@ def test_connection(test_db: Path):
     user = "tests_user"
     access = DBAccess.READ_ONLY
 
-    # Execute a query
     # Create a connection object
     conn = connection(
         host=host,

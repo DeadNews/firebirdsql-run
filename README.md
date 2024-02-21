@@ -15,32 +15,58 @@ pip install firebirdsql-run
 
 ## Examples
 
-- Execute a transaction
-
 ```py
-result = execute(query="SELECT * FROM table", db="database")
-print(result.data)  # Output: List of dictionaries containing the query results
+from firebirdsql_run import DBAccess, execute
+
+# Execute a query with read-only access.
+result = execute(query="SELECT * FROM table", db="database", access=DBAccess.READ_ONLY)
+
+# Output: List of dictionaries containing the query results.
+print(result.data)
 ```
 
-- Execute a transaction with custom parameters and an existing connection
+```py
+# Execute a query with parameters.
+result = execute(q"INSERT INTO customers (name, age) VALUES (?, ?)", params=("John", 25))
+
+# Output: List of dictionaries containing the query results.
+print(result.data)
+```
 
 ```py
+# Create a connection object.
 conn = connection(db="/path/to/database.fdb")
-result = execute("INSERT INTO customers (name, age) VALUES (?, ?)", params=("John", 25), use_conn=conn)
-print(result.returncode)  # Output: 0 (success)
+# Execute a query using the existing connection
+result = execute(query="SELECT * FROM table", use_conn=conn)
+# Close the connection.
 conn.close()
+
+# Output: 0 (success) or 1 (error).
+print(result.returncode)
 ```
 
-## Representation of a completed transaction
+## Completed transaction
 
-- Table
+When you execute a query, `firebirdsql-run` returns a `CompletedTransaction` object. This object contains the following attributes:
+
+- `host`: The host where the transaction was executed.
+- `db`: The database where the transaction was executed.
+- `user`: The user who executed the transaction.
+- `access`: The access mode used for the transaction.
+- `returncode`: The return code of the transaction execution.
+- `exception`: The exception message if the transaction failed.
+- `query`: The SQL query executed in the transaction.
+- `params`: The parameters used in the SQL query.
+- `data`: The data returned by the transaction, represented as a list of dictionaries.
+
+Queried table:
 
 | maker | model | type |
 | ----- | ----- | ---- |
 | B     | 1121  | PC   |
 | A     | 1232  | PC   |
 
-- Success example
+An example of a successful transaction:
 
 ```py
 CompletedTransaction(
@@ -59,7 +85,7 @@ CompletedTransaction(
 )
 ```
 
-- Error example
+An example of a failed transaction:
 
 ```py
 CompletedTransaction(
