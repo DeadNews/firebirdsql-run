@@ -77,6 +77,7 @@ def test_execute(test_db: Path):
     assert result.exception == ""
     assert result.query == query
     assert result.params == ()
+    assert result.time > 0
     assert len(result.data) > 0
 
 
@@ -121,6 +122,7 @@ def test_execute_with_existing_connection(test_db: Path):
     assert result.exception == ""
     assert result.query == query
     assert result.params == ()
+    assert result.time > 0
     assert len(result.data) > 0
 
 
@@ -138,6 +140,7 @@ def test_execute_with_exception_with_default_values():
     assert result.exception == "Please setup FIREBIRD_KEY in environment variables."
     assert result.query == query
     assert result.params == ()
+    assert result.time == 0
     assert isinstance(result.data, list)
 
 
@@ -170,6 +173,7 @@ def test_execute_with_exception():
     assert len(result.exception) > 0
     assert result.query == query
     assert result.params == ()
+    assert result.time == 0
     assert result.data == []
 
 
@@ -218,4 +222,5 @@ def test_callproc_with_exception():
     assert len(result.exception) > 0
     assert result.query == make_query(procname, params)
     assert result.params == params
+    assert result.time == 0
     assert result.data == []

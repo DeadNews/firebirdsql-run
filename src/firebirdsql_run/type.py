@@ -30,6 +30,7 @@ class CompletedTransaction(NamedTuple):
         exception (str): The exception message if the transaction failed.
         query (str): The SQL query executed in the transaction.
         params (tuple): The parameters used in the SQL query.
+        time (float): The number of seconds it took to execute the transaction.
         data (Dataset): The data returned by the transaction, represented as a list of dictionaries.
     """
 
@@ -42,6 +43,7 @@ class CompletedTransaction(NamedTuple):
     exception: str
     query: str
     params: tuple
+    time: float
     data: Dataset
 
 

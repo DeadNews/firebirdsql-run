@@ -64,6 +64,7 @@ When you execute a query, `firebirdsql-run` returns a `CompletedTransaction` obj
 - `exception`: The exception message if the transaction failed.
 - `query`: The SQL query executed in the transaction.
 - `params`: The parameters used in the SQL query.
+- `time`: The number of seconds it took to execute the transaction.
 - `data`: The data returned by the transaction, represented as a list of dictionaries.
 
 Queried table:
@@ -85,6 +86,7 @@ CompletedTransaction(
     exception="",
     query="SELECT * FROM table",
     params=(),
+    time=0.001,
     data=[
         {"maker": "B", "model": 1121, "type": "PC"},
         {"maker": "A", "model": 1232, "type": "PC"},
@@ -104,6 +106,7 @@ CompletedTransaction(
     exception="Dynamic SQL Error\nSQL error code = -204\nTable unknown\ntable\nAt line 1, column 15\n",
     query="SELECT * FROM table",
     params=(),
+    time=0.001,
     data=[],
 )
 ```
