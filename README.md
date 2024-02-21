@@ -53,7 +53,8 @@ print(result.returncode)
 
 ## Completed transaction
 
-When you execute a query, `firebirdsql-run` returns a `CompletedTransaction` object. This object contains the following attributes:
+When you execute a query, `firebirdsql-run` returns a `CompletedTransaction` object. \
+This object contains the following attributes:
 
 - `host`: The host address of the server.
 - `port`: The port number of the server.
