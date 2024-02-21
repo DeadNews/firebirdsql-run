@@ -3,7 +3,7 @@ version: "3"
 services:
   # Run firebird server for integration tests
   db:
-    image: jacobalberty/firebird:v4.0.1@sha256:53c07f7e328c8dd3840e897433de7d4403a0a22fc595dd36835699dfe61e169b
+    image: jacobalberty/firebird:v5.0.0@sha256:a9d407892a9efa005f6456c0bb6daccabe73f747707663249ea6d061c5defe66
     ports:
       - 127.0.0.1:3050:3050/tcp
     environment:
