@@ -22,13 +22,14 @@ def test_connection(test_db: Path):
     """Test the connection function."""
     # Define test parameters
     host = "localhost"
+    port = 3050
     user = "tests_user"
     access = DBAccess.READ_ONLY
 
-    # Execute a query
     # Create a connection object
     conn = connection(
         host=host,
+        port=port,
         db=test_db,
         user=user,
         passwd="tests_password",
@@ -39,7 +40,7 @@ def test_connection(test_db: Path):
     assert isinstance(conn, Connection)
     assert conn.filename == f"{test_db}"
     assert conn.hostname == host
-    assert conn.port == 3050
+    assert conn.port == port
     assert conn.user == user
     assert conn.isolation_level == access.value
 
@@ -50,6 +51,7 @@ def test_execute(test_db: Path):
     # Define test parameters
     query = "SELECT * FROM rdb$database;"
     host = "localhost"
+    port = 3050
     user = "tests_user"
     access = DBAccess.READ_ONLY
 
@@ -57,6 +59,7 @@ def test_execute(test_db: Path):
     result = execute(
         query=query,
         host=host,
+        port=port,
         db=test_db,
         user=user,
         passwd="tests_password",
@@ -67,12 +70,14 @@ def test_execute(test_db: Path):
     assert isinstance(result, CompletedTransaction)
     assert result.host == host
     assert result.db == f"{test_db}"
+    assert result.port == port
     assert result.user == user
     assert result.access == access.name
     assert result.returncode == 0
     assert result.exception == ""
     assert result.query == query
     assert result.params == ()
+    assert result.time > 0
     assert len(result.data) > 0
 
 
@@ -82,6 +87,7 @@ def test_execute_with_existing_connection(test_db: Path):
     # Define test parameters
     query = "SELECT * FROM rdb$database;"
     host = "localhost"
+    port = 3050
     user = "tests_user"
     access = DBAccess.READ_ONLY
 
@@ -89,6 +95,7 @@ def test_execute_with_existing_connection(test_db: Path):
     conn = connection(
         host=host,
         db=test_db,
+        port=port,
         user=user,
         passwd="tests_password",
         access=access,
@@ -102,18 +109,20 @@ def test_execute_with_existing_connection(test_db: Path):
     assert isinstance(conn, Connection)
     assert conn.filename == f"{test_db}"
     assert conn.hostname == host
-    assert conn.port == 3050
+    assert conn.port == port
     assert conn.user == user
     assert conn.isolation_level == access.value
     assert isinstance(result, CompletedTransaction)
     assert result.host == host
     assert result.db == f"{test_db}"
+    assert result.port == port
     assert result.user == user
     assert result.access == access.name
     assert result.returncode == 0
     assert result.exception == ""
     assert result.query == query
     assert result.params == ()
+    assert result.time > 0
     assert len(result.data) > 0
 
 
@@ -131,6 +140,7 @@ def test_execute_with_exception_with_default_values():
     assert result.exception == "Please setup FIREBIRD_KEY in environment variables."
     assert result.query == query
     assert result.params == ()
+    assert result.time == 0
     assert isinstance(result.data, list)
 
 
@@ -163,6 +173,7 @@ def test_execute_with_exception():
     assert len(result.exception) > 0
     assert result.query == query
     assert result.params == ()
+    assert result.time == 0
     assert result.data == []
 
 
@@ -211,4 +222,5 @@ def test_callproc_with_exception():
     assert len(result.exception) > 0
     assert result.query == make_query(procname, params)
     assert result.params == params
+    assert result.time == 0
     assert result.data == []

@@ -9,7 +9,7 @@ from firebirdsql import (
 )
 
 from firebirdsql_run.type import CompletedTransaction, DBAccess
-from firebirdsql_run.util import get_env
+from firebirdsql_run.util import Timer, get_env
 
 
 def connection(
@@ -71,6 +71,8 @@ def execute(
         CompletedTransaction: An named tuple containing the transaction details, including the query result.
     """
     conn: Connection | None = None
+    timer: Timer | None = None
+
     try:
         conn = use_conn or connection(
             host=host,
@@ -80,7 +82,7 @@ def execute(
             passwd=passwd,
             access=access,
         )
-        with conn.cursor() as cur:
+        with conn.cursor() as cur, Timer() as timer:
             cur.execute(query=query, params=params)
             lines = cur.fetchall()
             descr = cur.description
@@ -102,6 +104,7 @@ def execute(
 
     return CompletedTransaction(
         host=host if conn is None else conn.hostname,
+        port=port if conn is None else conn.port,
         db=f"{db}" if conn is None else f"{conn.filename}",
         user=user if conn is None else f"{conn.user}",
         access=access.name if conn is None else DBAccess(conn.isolation_level).name,
@@ -109,6 +112,7 @@ def execute(
         exception=exception,
         query=query,
         params=params,
+        time=0 if timer is None else round(timer.interval, 5),
         data=data,
     )
 

@@ -21,25 +21,29 @@ class CompletedTransaction(NamedTuple):
     """Represents a completed transaction in a database.
 
     Attributes:
-        host (str): The host where the transaction was executed.
+        host (str): The host address of the server.
+        port (int): The port number of the server.
         db (str): The database where the transaction was executed.
         user (str): The user who executed the transaction.
         access (str): The access mode used for the transaction.
         returncode (int): The return code of the transaction execution.
-        exception (str): The error message, if any encountered during the transaction execution.
+        exception (str): The exception message if the transaction failed.
         query (str): The SQL query executed in the transaction.
         params (tuple): The parameters used in the SQL query.
+        time (float): The number of seconds it took to execute the transaction.
         data (Dataset): The data returned by the transaction, represented as a list of dictionaries.
     """
 
     host: str
     db: str
+    port: int
     user: str
     access: str
     returncode: int
     exception: str
     query: str
     params: tuple
+    time: float
     data: Dataset
 
 
