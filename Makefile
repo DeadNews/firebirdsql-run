@@ -19,8 +19,13 @@ pc-run:
 lint:
 	poetry run poe lint
 
-test:
-	poetry run pytest -m 'not docker'
-
 pyright:
 	poetry run poe pyright
+
+test:
+	poetry run pytest -m 'not dbonline'
+
+test-integration:
+	docker compose -f docker-compose.test.yml up -d
+	poetry run pytest
+	docker compose -f docker-compose.test.yml down

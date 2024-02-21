@@ -47,7 +47,7 @@ cmd = "pytest --cov-report=xml"
 [tool.pytest.ini_options]
 addopts = "--verbose --cov=./src --cov-report=term"
 testpaths = ["tests"]
-markers = ["docker"]
+markers = ["dbonline: Run tests that require a live Firebird server"]
 
 [tool.coverage.report]
 exclude_lines = [
