@@ -1,9 +1,20 @@
-"""Types."""
+"""Type definitions for the package."""
+
 from datetime import datetime
+from enum import IntEnum
 from typing import NamedTuple
+
+from firebirdsql import consts
 
 FBTypes = str | float | datetime | None
 Dataset = list[dict[str, FBTypes]]
+
+
+class AccessMode(IntEnum):
+    """Enumeration of access modes for FirebirdSQL connections."""
+
+    READ_ONLY = consts.ISOLATION_LEVEL_READ_COMMITED_RO
+    READ_WRITE = consts.ISOLATION_LEVEL_READ_COMMITED
 
 
 class CompletedTransaction(NamedTuple):
@@ -13,6 +24,7 @@ class CompletedTransaction(NamedTuple):
         host (str): The host where the transaction was executed.
         db (str): The database where the transaction was executed.
         user (str): The user who executed the transaction.
+        access (AccessMode): The access mode used for the transaction.
         returncode (int): The return code of the transaction execution.
         error (str): The error message, if any, encountered during the transaction execution.
         query (str): The SQL query executed in the transaction.
@@ -23,6 +35,7 @@ class CompletedTransaction(NamedTuple):
     host: str
     db: str
     user: str
+    access: AccessMode
     returncode: int
     error: str
     query: str
