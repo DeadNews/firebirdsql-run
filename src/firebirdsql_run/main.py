@@ -92,12 +92,12 @@ def execute(
     except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
-        error = f"{e}"
+        exception = f"{e}"
     else:
         columns = [] if descr is None else [f"{col[0]}".lower() for col in descr]
         data = [] if lines is None else [dict(zip(columns, line, strict=True)) for line in lines]
         returncode = 0
-        error = ""
+        exception = ""
     finally:
         if conn is not None:
             conn.commit()
@@ -108,9 +108,9 @@ def execute(
         host=host if conn is None else conn.hostname,
         db=f"{db}" if conn is None else f"{conn.filename}",
         user=user if conn is None else f"{conn.user}",
-        access=access,
+        access=access.name,
         returncode=returncode,
-        error=error,
+        exception=exception,
         query=query,
         params=params,
         data=data,
