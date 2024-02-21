@@ -1,22 +1,42 @@
 from os import getenv
+from pathlib import Path
 
 import pytest
-from firebirdsql_run import DBAccess, callproc, connection, execute
+from firebirdsql_run import Connection, DBAccess, callproc, connection, execute
+
+
+@pytest.fixture()
+def test_dbh() -> Path:
+    return Path("/path/to/test/database.fdb")
 
 
 @pytest.mark.dbonline()
-def test_execute():
+def test_connection(test_db: Path):
+    """Test the connection function."""
+    conn = connection(test_db)
+
+    assert isinstance(conn, Connection)
+    assert conn.database == f"{test_db}"
+    assert conn.host == "127.0.0.1"
+    assert conn.port == 3050
+    assert conn.user == "TWUSER"
+    assert conn.password == ""
+    assert conn.isolation_level == DBAccess.READ_WRITE.value
+
+
+@pytest.mark.dbonline()
+def test_execute(test_db: Path):
     result = execute(
         query="SELECT * FROM rdb$database;",
         host="localhost",
-        db="/firebird/data/tests_database.fdb",
+        db=test_db,
         user="tests_user",
         passwd=getenv("FIREBIRD_KEY", "tests_password"),
         access=DBAccess.READ_ONLY,
     )
 
     assert result.host == "localhost"
-    assert result.db == "/firebird/data/tests_database.fdb"
+    assert result.db == f"{test_db}"
     assert result.user == "tests_user"
     assert result.access == DBAccess.READ_ONLY.name
     assert result.returncode == 0
@@ -27,10 +47,10 @@ def test_execute():
 
 
 @pytest.mark.dbonline()
-def test_reuse_connection():
+def test_reuse_connection(test_db: Path):
     conn = connection(
         host="localhost",
-        db="/firebird/data/tests_database.fdb",
+        db=test_db,
         user="tests_user",
         passwd=getenv("FIREBIRD_KEY", "tests_password"),
         access=DBAccess.READ_ONLY,
@@ -40,8 +60,9 @@ def test_reuse_connection():
         use_conn=conn,
     )
 
+    assert isinstance(conn, Connection)
     assert result.host == "localhost"
-    assert result.db == "/firebird/data/tests_database.fdb"
+    assert result.db == f"{test_db}"
     assert result.user == "tests_user"
     assert result.access == DBAccess.READ_ONLY.name
     assert result.returncode == 0
