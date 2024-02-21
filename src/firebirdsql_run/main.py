@@ -117,6 +117,19 @@ def execute(
     )
 
 
+def make_query(procname: str, params: tuple) -> str:
+    """Create a query for a stored procedure in a Firebird database.
+
+    Args:
+        procname: The name of the stored procedure to execute.
+        params: The parameters to pass to the stored procedure.
+
+    Returns:
+        str: The query for the stored procedure.
+    """
+    return f"EXECUTE PROCEDURE {procname} " + ",".join("?" * len(params))
+
+
 def callproc(
     procname: str,
     params: tuple = (),
@@ -144,10 +157,8 @@ def callproc(
     Returns:
         CompletedTransaction: An named tuple containing the transaction details, including the query result.
     """
-    query = f"EXECUTE PROCEDURE {procname} " + ",".join("?" * len(params))
-
     return execute(
-        query=query,
+        query=make_query(procname, params),
         params=params,
         host=host,
         port=port,

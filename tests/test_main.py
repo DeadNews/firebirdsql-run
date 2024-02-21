@@ -8,6 +8,7 @@ from firebirdsql_run import (
     callproc,
     connection,
     execute,
+    make_query,
 )
 
 
@@ -19,7 +20,7 @@ def test_db() -> Path:
 @pytest.mark.dbonline()
 def test_connection(test_db: Path):
     """Test the connection function."""
-    # Variables
+    # Define test parameters
     host = "localhost"
     user = "tests_user"
     access = DBAccess.READ_ONLY
@@ -34,6 +35,7 @@ def test_connection(test_db: Path):
         access=access,
     )
 
+    # Assert the result
     assert isinstance(conn, Connection)
     assert conn.filename == f"{test_db}"
     assert conn.hostname == host
@@ -45,7 +47,7 @@ def test_connection(test_db: Path):
 @pytest.mark.dbonline()
 def test_execute(test_db: Path):
     """Test execute function."""
-    # Variables
+    # Define test parameters
     query = "SELECT * FROM rdb$database;"
     host = "localhost"
     user = "tests_user"
@@ -61,6 +63,7 @@ def test_execute(test_db: Path):
         access=access,
     )
 
+    # Assert the result
     assert isinstance(result, CompletedTransaction)
     assert result.host == host
     assert result.db == f"{test_db}"
@@ -76,7 +79,7 @@ def test_execute(test_db: Path):
 @pytest.mark.dbonline()
 def test_execute_with_existing_connection(test_db: Path):
     """Test execute function with an existing connection."""
-    # Variables
+    # Define test parameters
     query = "SELECT * FROM rdb$database;"
     host = "localhost"
     user = "tests_user"
@@ -95,6 +98,7 @@ def test_execute_with_existing_connection(test_db: Path):
     # Close the connection
     conn.close()
 
+    # Assert the result
     assert isinstance(conn, Connection)
     assert conn.filename == f"{test_db}"
     assert conn.hostname == host
@@ -115,12 +119,13 @@ def test_execute_with_existing_connection(test_db: Path):
 
 def test_execute_with_exception_with_default_values():
     """Test execute function with default values."""
-    # Variables
+    # Define test parameters
     query = "SELECT * FROM rdb$database;"
 
     # Execute a query
     result = execute(query=query)
 
+    # Assert the result
     assert isinstance(result, CompletedTransaction)
     assert result.returncode == 1
     assert result.exception == "Please setup FIREBIRD_KEY in environment variables."
@@ -131,7 +136,7 @@ def test_execute_with_exception_with_default_values():
 
 def test_execute_with_exception():
     """Test execute function with an exception."""
-    # Variables
+    # Define test parameters
     query = "SELECT * FROM non_existing_table;"
     host = "localhost"
     db = "NONEXISTENT"
@@ -148,6 +153,7 @@ def test_execute_with_exception():
         access=access,
     )
 
+    # Assert the result
     assert isinstance(result, CompletedTransaction)
     assert result.host == host
     assert result.db == db
@@ -160,8 +166,25 @@ def test_execute_with_exception():
     assert result.data == []
 
 
+def test_make_query():
+    """Test make_query function."""
+    # Define test parameters
+    procname = "PROCNAME"
+    params = ("p1", "p2", "p3")
+
+    # Call the function
+    query = make_query(procname, params)
+
+    # Assert the result
+    assert isinstance(query, str)
+    assert query == "EXECUTE PROCEDURE PROCNAME ?,?,?"
+
+
 def test_callproc_with_exception():
-    # Variables
+    """Test callproc function with an exception."""
+    # Define test parameters
+    procname = "PROCNAME"
+    params = ("p1", "p2", "p3")
     host = "localhost"
     db = "NONEXISTENT"
     user = "NONEXISTENT"
@@ -169,8 +192,8 @@ def test_callproc_with_exception():
 
     # Execute a query
     result = callproc(
-        procname="PROCNAME",
-        params=("p1", "p2", "p3"),
+        procname=procname,
+        params=params,
         host=host,
         db=db,
         user=user,
@@ -178,6 +201,7 @@ def test_callproc_with_exception():
         access=access,
     )
 
+    # Assert the result
     assert isinstance(result, CompletedTransaction)
     assert result.host == host
     assert result.db == db
@@ -185,6 +209,6 @@ def test_callproc_with_exception():
     assert result.access == access.name
     assert result.returncode == 1
     assert len(result.exception) > 0
-    assert result.query == "EXECUTE PROCEDURE PROCNAME ?,?,?"
-    assert result.params == ("p1", "p2", "p3")
+    assert result.query == make_query(procname, params)
+    assert result.params == params
     assert result.data == []
