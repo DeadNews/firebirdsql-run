@@ -108,7 +108,7 @@ def execute(
         host=host if conn is None else conn.hostname,
         db=f"{db}" if conn is None else f"{conn.filename}",
         user=user if conn is None else f"{conn.user}",
-        access=access.name,
+        access=access.name if conn is None else AccessMode(conn.isolation_level).name,
         returncode=returncode,
         exception=exception,
         query=query,
