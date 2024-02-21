@@ -21,7 +21,8 @@ class CompletedTransaction(NamedTuple):
     """Represents a completed transaction in a database.
 
     Attributes:
-        host (str): The host where the transaction was executed.
+        host (str): The host address of the server.
+        port (int): The port number of the server.
         db (str): The database where the transaction was executed.
         user (str): The user who executed the transaction.
         access (str): The access mode used for the transaction.
@@ -34,6 +35,7 @@ class CompletedTransaction(NamedTuple):
 
     host: str
     db: str
+    port: int
     user: str
     access: str
     returncode: int

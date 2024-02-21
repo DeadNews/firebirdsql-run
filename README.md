@@ -49,7 +49,8 @@ print(result.returncode)
 
 When you execute a query, `firebirdsql-run` returns a `CompletedTransaction` object. This object contains the following attributes:
 
-- `host`: The host where the transaction was executed.
+- `host`: The host address of the server.
+- `port`: The port number of the server.
 - `db`: The database where the transaction was executed.
 - `user`: The user who executed the transaction.
 - `access`: The access mode used for the transaction.

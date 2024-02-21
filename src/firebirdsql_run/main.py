@@ -102,6 +102,7 @@ def execute(
 
     return CompletedTransaction(
         host=host if conn is None else conn.hostname,
+        port=port if conn is None else conn.port,
         db=f"{db}" if conn is None else f"{conn.filename}",
         user=user if conn is None else f"{conn.user}",
         access=access.name if conn is None else DBAccess(conn.isolation_level).name,
