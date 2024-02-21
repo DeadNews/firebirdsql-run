@@ -10,7 +10,7 @@ FBTypes = str | float | datetime | None
 Dataset = list[dict[str, FBTypes]]
 
 
-class AccessMode(IntEnum):
+class DBAccess(IntEnum):
     """Enumeration of access modes for FirebirdSQL connections."""
 
     READ_ONLY = consts.ISOLATION_LEVEL_READ_COMMITED_RO

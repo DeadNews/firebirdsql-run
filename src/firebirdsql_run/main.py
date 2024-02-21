@@ -8,7 +8,7 @@ from firebirdsql import (
     connect,
 )
 
-from firebirdsql_run.type import AccessMode, CompletedTransaction
+from firebirdsql_run.type import CompletedTransaction, DBAccess
 from firebirdsql_run.util import get_env
 
 
@@ -18,7 +18,7 @@ def connection(
     port: int = 3050,
     user: str = "TWUSER",
     passwd: str = "",
-    access: AccessMode = AccessMode.READ_WRITE,
+    access: DBAccess = DBAccess.READ_WRITE,
 ) -> Connection:
     """Create a connection to a Firebird database using the firebirdsql library.
 
@@ -51,7 +51,7 @@ def execute(
     port: int = 3050,
     user: str = "TWUSER",
     passwd: str = "",
-    access: AccessMode = AccessMode.READ_WRITE,
+    access: DBAccess = DBAccess.READ_WRITE,
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
     """Execute a transaction in a Firebird database.
@@ -108,7 +108,7 @@ def execute(
         host=host if conn is None else conn.hostname,
         db=f"{db}" if conn is None else f"{conn.filename}",
         user=user if conn is None else f"{conn.user}",
-        access=access.name if conn is None else AccessMode(conn.isolation_level).name,
+        access=access.name if conn is None else DBAccess(conn.isolation_level).name,
         returncode=returncode,
         exception=exception,
         query=query,
@@ -125,7 +125,7 @@ def callproc(
     port: int = 3050,
     user: str = "TWUSER",
     passwd: str = "",
-    access: AccessMode = AccessMode.READ_WRITE,
+    access: DBAccess = DBAccess.READ_WRITE,
     use_conn: Connection | None = None,
 ) -> CompletedTransaction:
     """Execute a stored procedure in a Firebird database.
