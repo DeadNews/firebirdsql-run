@@ -1,4 +1,5 @@
-"""Utils."""
+"""Utility functions for the package."""
+
 from os import getenv
 
 
@@ -7,14 +8,13 @@ class GetEnvError(Exception):
 
 
 def get_env(variable: str) -> str:
-    """
-    Get the value of an environment variable.
+    """Get the value of an environment variable.
 
     Args:
-        variable (str): The name of the environment variable to retrieve.
+        variable: The name of the environment variable to retrieve.
 
     Returns:
-        str: The value of the environment variable, if found.
+        The value of the environment variable, if found.
 
     Raises:
         GetEnvError: If the environment variable is not found.

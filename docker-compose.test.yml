@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  # Run firebird server for integration tests
+  db:
+    image: jacobalberty/firebird:v4.0.1@sha256:53c07f7e328c8dd3840e897433de7d4403a0a22fc595dd36835699dfe61e169b
+    ports:
+      - 127.0.0.1:3050:3050/tcp
+    environment:
+      FIREBIRD_DATABASE: tests_database.fdb
+      FIREBIRD_USER: tests_user
+      FIREBIRD_PASSWORD: tests_password
