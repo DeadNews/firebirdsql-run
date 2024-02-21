@@ -27,7 +27,7 @@ def connection(
         host: The host address of the server.
         port: The port number of the server.
         user: The username for authentication.
-        passwd: The password. If omitted, the password is taken from `FIREBIRD_KEY` environment variable.
+        passwd: The password. If omitted, it is taken from `FIREBIRD_KEY` environment variable.
         access: The access mode for the connection.
 
     Returns:
@@ -63,7 +63,7 @@ def execute(
         host: The host address of the server.
         port: The port number of the server.
         user: The username for authentication.
-        passwd: The password. If omitted, the password is taken from `FIREBIRD_KEY` environment variable.
+        passwd: The password. If omitted, it is taken from `FIREBIRD_KEY` environment variable.
         access: The access mode for the connection.
         use_conn: An existing connection to use. Takes precedence over the default connection settings.
 
@@ -137,7 +137,7 @@ def callproc(
         host: The host address of the server.
         port: The port number of the server.
         user: The username for authentication.
-        passwd: The password. If omitted, the password is taken from `FIREBIRD_KEY` environment variable.
+        passwd: The password. If omitted, it is taken from `FIREBIRD_KEY` environment variable.
         access: The access mode for the connection.
         use_conn: An existing connection to use. Takes precedence over the default connection settings.
 
