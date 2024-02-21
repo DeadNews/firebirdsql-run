@@ -72,23 +72,19 @@ def execute(
     """
     conn: Connection | None = None
     try:
-        conn = (
-            connection(
-                host=host,
-                db=db,
-                port=port,
-                user=user,
-                passwd=passwd,
-                access=access,
-            )
-            if use_conn is None
-            else use_conn
+        conn = use_conn or connection(
+            host=host,
+            db=db,
+            port=port,
+            user=user,
+            passwd=passwd,
+            access=access,
         )
-        cur = conn.cursor()
-        cur.execute(query=query, params=params)
+        with conn.cursor() as cur:
+            cur.execute(query=query, params=params)
+            lines = cur.fetchall()
+            descr = cur.description
 
-        lines = cur.fetchall()
-        descr = cur.description
     except Exception as e:  # noqa: BLE001
         data = []
         returncode = 1
