@@ -38,7 +38,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.10", "3.11", "3.12"]
-        firebird-version: ["2.5-sc", "latest"]
+        firebird-version: ["2.5-sc", "v4", "v5"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -66,7 +66,7 @@ jobs:
         run: poetry run poe test
 
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.firebird-version == '2.5-sc' && matrix.python-version == '3.11'
+        if: matrix.os == 'ubuntu-latest' && matrix.firebird-version == '2.5-sc' && matrix.python-version == '3.12'
         uses: codecov/codecov-action@4fe8c5f003fae66aa5ebb77cfd3e7bfbbda0b6b0 # v3.1.5
 
   publish-pypi:
