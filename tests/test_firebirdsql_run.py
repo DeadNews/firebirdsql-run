@@ -9,15 +9,15 @@ def test_execute():
     result = execute(
         query="SELECT * FROM rdb$database;",
         host="localhost",
-        db="/firebird/data/my_database.fdb",
-        user="my_user",
-        passwd=getenv("FIREBIRD_KEY", "my_password"),
+        db="/firebird/data/tests_database.fdb",
+        user="tests_user",
+        passwd=getenv("FIREBIRD_KEY", "tests_password"),
         access=DBAccess.READ_ONLY,
     )
 
     assert result.host == "localhost"
-    assert result.db == "/firebird/data/my_database.fdb"
-    assert result.user == "my_user"
+    assert result.db == "/firebird/data/tests_database.fdb"
+    assert result.user == "tests_user"
     assert result.access == DBAccess.READ_ONLY.name
     assert result.returncode == 0
     assert result.exception == ""
@@ -30,9 +30,9 @@ def test_execute():
 def test_reuse_connection():
     conn = connection(
         host="localhost",
-        db="/firebird/data/my_database.fdb",
-        user="my_user",
-        passwd=getenv("FIREBIRD_KEY", "my_password"),
+        db="/firebird/data/tests_database.fdb",
+        user="tests_user",
+        passwd=getenv("FIREBIRD_KEY", "tests_password"),
         access=DBAccess.READ_ONLY,
     )
     result = execute(
@@ -41,8 +41,8 @@ def test_reuse_connection():
     )
 
     assert result.host == "localhost"
-    assert result.db == "/firebird/data/my_database.fdb"
-    assert result.user == "my_user"
+    assert result.db == "/firebird/data/tests_database.fdb"
+    assert result.user == "tests_user"
     assert result.access == DBAccess.READ_ONLY.name
     assert result.returncode == 0
     assert result.exception == ""

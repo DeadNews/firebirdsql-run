@@ -7,6 +7,6 @@ services:
     ports:
       - 127.0.0.1:3050:3050/tcp
     environment:
-      FIREBIRD_DATABASE: my_database.fdb
-      FIREBIRD_USER: my_user
-      FIREBIRD_PASSWORD: my_password
+      FIREBIRD_DATABASE: tests_database.fdb
+      FIREBIRD_USER: tests_user
+      FIREBIRD_PASSWORD: tests_password
