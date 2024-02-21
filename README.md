@@ -15,6 +15,8 @@ pip install firebirdsql-run
 
 ## Examples
 
+Execute a query with read-only access:
+
 ```py
 from firebirdsql_run import DBAccess, execute
 
@@ -25,6 +27,8 @@ result = execute(query="SELECT * FROM table", db="database", access=DBAccess.REA
 print(result.data)
 ```
 
+Execute a query with parameters:
+
 ```py
 # Execute a query with parameters.
 result = execute(q"INSERT INTO customers (name, age) VALUES (?, ?)", params=("John", 25))
@@ -33,10 +37,12 @@ result = execute(q"INSERT INTO customers (name, age) VALUES (?, ?)", params=("Jo
 print(result.data)
 ```
 
+Execute a query using the existing connection:
+
 ```py
 # Create a connection object.
 conn = connection(db="/path/to/database.fdb")
-# Execute a query using the existing connection
+# Execute a query using the existing connection.
 result = execute(query="SELECT * FROM table", use_conn=conn)
 # Close the connection.
 conn.close()
@@ -108,4 +114,4 @@ CompletedTransaction(
 FIREBIRD_KEY=
 ```
 
-The `FIREBIRD_KEY` environment variable can be overridden with the function argument `passwd`.
+The `FIREBIRD_KEY` environment variable can be overridden with the functions argument `passwd`.
