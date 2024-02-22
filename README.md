@@ -31,7 +31,7 @@ Execute a query with parameters:
 
 ```py
 # Execute a query with parameters.
-result = execute(q"INSERT INTO customers (name, age) VALUES (?, ?)", params=("John", 25))
+result = execute(query="INSERT INTO customers (name, age) VALUES (?, ?)", params=("John", 25))
 
 # Output: List of dictionaries containing the query results.
 print(result.data)
