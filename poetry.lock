@@ -94,12 +94,12 @@ test = ["pytest (>=6)"]
 
 [[package]]
 name = "firebirdsql"
-version = "1.2.3"
+version = "1.2.5"
 description = "Firebird RDBMS bindings for python."
 optional = false
 python-versions = "*"
 files = [
-    {file = "firebirdsql-1.2.3.tar.gz", hash = "sha256:290dd684ad6e18e492948e41edbea63720b890610a93b95e43fdc48f00fc606a"},
+    {file = "firebirdsql-1.2.5.tar.gz", hash = "sha256:ac47a347379352a270742927fea6f509bdf4a30654a471950e49ea2db990d401"},
 ]
 
 [[package]]
