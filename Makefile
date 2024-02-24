@@ -29,3 +29,6 @@ test-integration:
 	docker compose -f docker-compose.test.yml up -d
 	poetry run pytest
 	docker compose -f docker-compose.test.yml down
+
+docs-serve:
+	poetry run mkdocs serve

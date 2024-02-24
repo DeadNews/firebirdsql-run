@@ -1,0 +1,30 @@
+site_name: firebirdsql-run
+repo_url: https://github.com/deadnews/firebirdsql-run
+edit_uri: blob/main/docs/
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        name: Switch to light mode
+        icon: material/brightness-auto
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        name: Switch to dark mode
+        icon: material/brightness-7
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        name: Switch to system preference
+        icon: material/brightness-4
+  features:
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+    - announce.dismiss
+    - navigation.tabs
+
+plugins:
+  - search
+  - mkdocstrings

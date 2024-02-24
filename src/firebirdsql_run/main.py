@@ -126,6 +126,12 @@ def make_query(procname: str, params: tuple) -> str:
 
     Returns:
         str: The query for the stored procedure.
+
+    Example:
+        ```py
+        >>> make_query('my_procedure', (1, 'example'))
+        <<< 'EXECUTE PROCEDURE my_procedure ?,?'
+        ```
     """
     return f"EXECUTE PROCEDURE {procname} " + ",".join("?" * len(params))
 
