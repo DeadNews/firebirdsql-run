@@ -4,7 +4,7 @@ edit_uri: blob/main/docs/
 
 nav:
   - Overview: index.md
-  - Reference:
+  - API Reference:
       - main: src/main.md
       - type: src/type.md
       - util: src/util.md
@@ -56,8 +56,8 @@ plugins:
             filters: ["!^_"]
             heading_level: 1
             inherited_members: true
+            members_order: source
             merge_init_into_class: true
-            order: source
             separate_signature: true
             show_root_full_path: true
             show_root_heading: true

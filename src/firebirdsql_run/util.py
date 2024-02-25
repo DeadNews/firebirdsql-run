@@ -16,7 +16,7 @@ def get_env(variable: str) -> str:
         variable: The name of the environment variable to retrieve.
 
     Returns:
-        The value of the environment variable, if found.
+        value: The value of the environment variable, if found.
 
     Raises:
         GetEnvError: If the environment variable is not found.

@@ -14,6 +14,10 @@
 pip install firebirdsql-run
 ```
 
+## Documentation
+
+<https://deadnews.github.io/firebirdsql-run>
+
 ## Examples
 
 Execute a query with read-only access:
@@ -28,44 +32,37 @@ result = execute(query="SELECT * FROM table", db="database", access=DBAccess.REA
 print(result.data)
 ```
 
-Execute a query with parameters:
+Execute a query with parameters and log the result:
 
 ```py
 # Execute a query with parameters.
 result = execute(query="INSERT INTO customers (name, age) VALUES (?, ?)", params=("John", 25))
 
-# Output: List of dictionaries containing the query results.
-print(result.data)
+# Log the result.
+if result.returncode != 0:
+    logger.error(result)
+else:
+    logger.info(result)
 ```
 
 Execute a query using the existing connection:
 
 ```py
 # Create a connection object.
-conn = connection(db="/path/to/database.fdb")
+conn = connection(db="database", access=DBAccess.READ_ONLY)
 # Execute a query using the existing connection.
 result = execute(query="SELECT * FROM table", use_conn=conn)
 # Close the connection.
 conn.close()
 
-# Output: 0 (success) or 1 (error).
-print(result.returncode)
+# Output: Named tuple representing the completed transaction.
+print(result)
 ```
-
-## Completed transaction
-
-When you execute a query, `firebirdsql-run` returns a [CompletedTransaction](https://deadnews.github.io/firebirdsql-run/src/type/#firebirdsql_run.type.CompletedTransaction) object.
-
-Queried table:
-
-| maker | model | type |
-| ----- | ----- | ---- |
-| B     | 1121  | PC   |
-| A     | 1232  | PC   |
 
 An example of a successful transaction:
 
 ```py
+>>> print(result)
 CompletedTransaction(
     host="127.0.0.1",
     db="database",
@@ -77,8 +74,8 @@ CompletedTransaction(
     params=(),
     time=0.001,
     data=[
-        {"maker": "B", "model": 1121, "type": "PC"},
-        {"maker": "A", "model": 1232, "type": "PC"},
+        {'id': 1, 'name': 'John Doe', 'department': 'Sales'},
+        {'id': 2, 'name': 'Jane Smith', 'department': 'Sales'},
     ],
 )
 ```
@@ -86,6 +83,7 @@ CompletedTransaction(
 An example of a failed transaction:
 
 ```py
+>>> print(result)
 CompletedTransaction(
     host="127.0.0.1",
     db="database",
