@@ -4,7 +4,7 @@ edit_uri: blob/main/docs/
 
 nav:
   - Overview: index.md
-  - API reference:
+  - Reference:
       - main: src/main.md
       - type: src/type.md
       - util: src/util.md

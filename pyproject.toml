@@ -46,7 +46,7 @@ mypy = "mypy ."
 pyright = "pyright ."
 ruff = "ruff check ."
 ruff-fmt = "ruff format ."
-lint.sequence = ["ruff", "ruff-fmt", "mypy"]
+lint.sequence = ["ruff", "ruff-fmt", "mypy", "pyright"]
 
 [tool.poe.tasks.test]
 cmd = "pytest --cov-report=xml"

@@ -11,16 +11,13 @@ pc-install:
 update-latest:
 	poetry up --latest
 
-checks: pc-run install lint pyright test
+checks: pc-run install lint test
 
 pc-run:
 	pre-commit run -a
 
 lint:
 	poetry run poe lint
-
-pyright:
-	poetry run poe pyright
 
 test:
 	poetry run pytest -m 'not dbonline'
