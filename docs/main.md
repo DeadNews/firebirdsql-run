@@ -1,0 +1,1 @@
+::: firebirdsql_run.main

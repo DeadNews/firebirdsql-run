@@ -9,14 +9,15 @@ description = "Firebirdsql wrapper inspired by subprocess.run"
 authors = ["DeadNews <aurczpbgr@mozmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/DeadNews/firebirdsql-run"
-repository = "https://github.com/DeadNews/firebirdsql-run"
+homepage = "https://github.com/deadnews/firebirdsql-run"
+repository = "https://github.com/deadnews/firebirdsql-run"
+documentation = "https://deadnews.github.io/firebirdsql-run"
 keywords = ["firebird", "sql", "api"]
 classifiers = ["Operating System :: OS Independent", "Topic :: Database"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-firebirdsql = "^1.2.3"
+firebirdsql = "^1.2.5"
 
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.8.0"
@@ -25,14 +26,15 @@ pyright = "^1.1.351"
 ruff = "^0.2.1"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.0.1"
+pytest = "^8.0.2"
 pytest-cov = "^4.1.0"
 pytest-mock = "^3.12.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
-mkdocs-material = "^9.5.10"
-mkdocstrings = { version = "^0.24.0", extras = ["python"] }
+mkdocs-material = "^9.5.11"
+mkdocstrings = "^0.24.0"
+mkdocstrings-python = "^1.8.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
