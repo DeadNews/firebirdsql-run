@@ -2,9 +2,16 @@ site_name: firebirdsql-run
 repo_url: https://github.com/deadnews/firebirdsql-run
 edit_uri: blob/main/docs/
 
-# nav:
-#   - Home:
-#       - Overview: index.md
+nav:
+  - Overview: index.md
+  - API reference:
+      - main: src/main.md
+      - type: src/type.md
+      - util: src/util.md
+
+watch:
+  - src
+  - README.md
 
 theme:
   name: material
@@ -24,14 +31,13 @@ theme:
         name: Switch to system preference
         icon: material/brightness-4
   features:
+    - content.code.annotate
     - content.code.copy
     - search.highlight
-
-watch:
-  - "src"
-  - "README.md"
+    - search.suggest
 
 markdown_extensions:
+  - attr_list
   - pymdownx.snippets
   - pymdownx.superfences
   - toc:
@@ -45,18 +51,18 @@ plugins:
           options:
             docstring_options:
               ignore_init_summary: true
+            docstring_section_style: table
+            docstring_style: google
             filters: ["!^_"]
             heading_level: 1
             inherited_members: true
             merge_init_into_class: true
+            order: source
             separate_signature: true
+            show_root_full_path: true
             show_root_heading: true
-            show_root_full_path: false
             show_signature_annotations: true
             show_symbol_type_heading: true
             show_symbol_type_toc: true
             signature_crossrefs: true
             summary: true
-            docstring_section_style: table
-            order: source
-            docstring_style: google
