@@ -54,20 +54,7 @@ print(result.returncode)
 
 ## Completed transaction
 
-When you execute a query, `firebirdsql-run` returns a `CompletedTransaction` object. \
-This object contains the following attributes:
-
-- `host`: The host address of the server.
-- `port`: The port number of the server.
-- `db`: The database where the transaction was executed.
-- `user`: The user who executed the transaction.
-- `access`: The access mode used for the transaction.
-- `returncode`: The return code of the transaction execution.
-- `exception`: The exception message if the transaction failed.
-- `query`: The SQL query executed in the transaction.
-- `params`: The parameters used in the SQL query.
-- `time`: The number of seconds it took to execute the transaction.
-- `data`: The data returned by the transaction, represented as a list of dictionaries.
+When you execute a query, `firebirdsql-run` returns a [CompletedTransaction](https://deadnews.github.io/firebirdsql-run/type/#firebirdsql_run.type.CompletedTransaction) object.
 
 Queried table:
 
