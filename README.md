@@ -54,7 +54,7 @@ print(result.returncode)
 
 ## Completed transaction
 
-When you execute a query, `firebirdsql-run` returns a [CompletedTransaction](https://deadnews.github.io/firebirdsql-run/type/#firebirdsql_run.type.CompletedTransaction) object.
+When you execute a query, `firebirdsql-run` returns a [CompletedTransaction](https://deadnews.github.io/firebirdsql-run/src/type/#firebirdsql_run.type.CompletedTransaction) object.
 
 Queried table:
 
