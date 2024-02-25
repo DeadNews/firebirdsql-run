@@ -95,10 +95,7 @@ jobs:
 
   docs-build:
     name: Build docs
-    if: github.event_name == 'release' && github.event.action == 'created'
     needs: [lint, tests]
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -130,6 +127,8 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
