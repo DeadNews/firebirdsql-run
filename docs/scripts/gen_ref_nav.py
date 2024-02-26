@@ -5,7 +5,6 @@ from pathlib import Path
 
 import mkdocs_gen_files
 
-pkg_name = "firebirdsql_run"
 nav = mkdocs_gen_files.Nav()
 mod_symbol = '<code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>'
 
@@ -13,7 +12,7 @@ src = Path(__file__).parent.parent.parent / "src"
 
 for path in sorted(src.rglob("*.py")):
     module_path = path.relative_to(src).with_suffix("")
-    doc_path = path.relative_to(src / pkg_name).with_suffix(".md")
+    doc_path = path.relative_to(src).with_suffix(".md")
     full_doc_path = Path("reference", doc_path)
 
     parts = tuple(module_path.parts)
@@ -32,7 +31,7 @@ for path in sorted(src.rglob("*.py")):
         ident = ".".join(parts)
         fd.write(f"::: {ident}")
 
-    mkdocs_gen_files.set_edit_path(full_doc_path, ".." / path)
+    mkdocs_gen_files.set_edit_path(full_doc_path, path)
 
 with mkdocs_gen_files.open("reference/SUMMARY.md", "w") as nav_file:
     nav_file.writelines(nav.build_literate_nav())

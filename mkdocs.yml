@@ -5,8 +5,7 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: index.md
   # defer to gen-files + literate-nav
-  - API reference:
-      - firebirdsql_run: reference/
+  - API reference: reference/
 
 watch:
   - src
@@ -30,18 +29,10 @@ theme:
         name: Switch to system preference
         icon: material/brightness-4
   features:
-    - announce.dismiss
-    - content.action.edit
-    - content.action.view
-    - content.code.annotate
     - content.code.copy
     - content.tooltips
-    - navigation.footer
     - navigation.indexes
     - navigation.sections
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.top
     - search.highlight
     - search.suggest
     - toc.follow
@@ -63,6 +54,9 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          paths: [src]
+          import:
+            - https://docs.python.org/3/objects.inv
           options:
             docstring_options:
               ignore_init_summary: true
@@ -74,9 +68,10 @@ plugins:
             members_order: source
             merge_init_into_class: true
             separate_signature: true
-            show_root_full_path: true
+            show_root_full_path: false
             show_root_heading: true
             show_signature_annotations: true
+            show_submodules: true
             show_symbol_type_heading: true
             show_symbol_type_toc: true
             signature_crossrefs: true

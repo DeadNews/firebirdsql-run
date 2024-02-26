@@ -1,4 +1,4 @@
-"""Firebirdsql wrapper inspired by subprocess.run."""
+"""Main module for the firebirdsql_run package."""
 
 from pathlib import Path
 from socket import getfqdn

@@ -7,7 +7,10 @@ from typing import NamedTuple
 from firebirdsql import consts
 
 FBTypes = str | float | datetime | None
+"""Type alias for the possible types of data returned by a FirebirdSQL query."""
+
 Dataset = list[dict[str, FBTypes]]
+"""Type alias for a list of dictionaries representing a dataset."""
 
 
 class DBAccess(IntEnum):
