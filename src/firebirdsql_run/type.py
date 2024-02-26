@@ -14,7 +14,12 @@ Dataset = list[dict[str, FBTypes]]
 
 
 class DBAccess(IntEnum):
-    """Enumeration of access modes for FirebirdSQL connections."""
+    """Enumeration of access modes for FirebirdSQL connections.
+
+    Attributes:
+        READ_ONLY: Read-only access mode.
+        READ_WRITE: Read-write access mode.
+    """
 
     READ_ONLY = consts.ISOLATION_LEVEL_READ_COMMITED_RO
     READ_WRITE = consts.ISOLATION_LEVEL_READ_COMMITED
