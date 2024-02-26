@@ -31,7 +31,7 @@ def connection(
         access: The access mode for the connection.
 
     Returns:
-        Connection: The connection object.
+        conn: The connection object.
     """
     return connect(
         host=getfqdn(host),
@@ -68,7 +68,7 @@ def execute(
         use_conn: An existing connection to use. Takes precedence over the default connection settings.
 
     Returns:
-        CompletedTransaction: An named tuple containing the transaction details, including the query result.
+        result: An named tuple containing the transaction details, including the query result.
     """
     conn: Connection | None = None
     timer: Timer | None = None
@@ -125,7 +125,7 @@ def make_query(procname: str, params: tuple) -> str:
         params: The parameters to pass to the stored procedure.
 
     Returns:
-        str: The query for the stored procedure.
+        query: The query for the stored procedure.
     """
     return f"EXECUTE PROCEDURE {procname} " + ",".join("?" * len(params))
 
@@ -155,7 +155,7 @@ def callproc(
         use_conn: An existing connection to use. Takes precedence over the default connection settings.
 
     Returns:
-        CompletedTransaction: An named tuple containing the transaction details, including the query result.
+        result: An named tuple containing the transaction details, including the query result.
     """
     return execute(
         query=make_query(procname, params),
