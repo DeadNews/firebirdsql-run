@@ -13,7 +13,7 @@
 - [Installation](#installation)
 - [Examples](#examples)
 - [Env variables](#env-variables)
-- [Documentation](https://deadnews.github.io/firebirdsql-run)
+- [Documentation](https://deadnews.github.io/firebirdsql-run/reference)
 
 ## Installation
 
