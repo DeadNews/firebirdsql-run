@@ -10,9 +10,11 @@ pkg_name = "firebirdsql_run"
 nav = Nav()
 mod_symbol = '<code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>'
 
-src = Path(__file__).parent.parent.parent / "src"
+root = Path(__file__).parent.parent.parent
+src = root / "src"
+mods = sorted(src.rglob("*.py"), key=lambda p: (len(p.parts), p))
 
-for path in sorted(src.rglob("*.py"), key=lambda p: (len(p.parts), p)):
+for path in mods:
     module_path = path.relative_to(src).with_suffix("")
     doc_path = path.relative_to(src / pkg_name).with_suffix(".md")
     full_doc_path = Path("reference", doc_path)
@@ -33,7 +35,7 @@ for path in sorted(src.rglob("*.py"), key=lambda p: (len(p.parts), p)):
         ident = ".".join(parts)
         fd.write(f"::: {ident}")
 
-    mkdocs_gen_files.set_edit_path(full_doc_path, ".." / path)
+    mkdocs_gen_files.set_edit_path(full_doc_path, ".." / path.relative_to(root))
 
 with mkdocs_gen_files.open("reference/SUMMARY.md", "w") as nav_file:
     nav_file.writelines(nav.build_literate_nav())
