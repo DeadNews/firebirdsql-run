@@ -12,8 +12,8 @@
 
 - [Installation](#installation)
 - [Examples](#examples)
-- [Env variables](#env-variables)
-- [API reference](https://deadnews.github.io/firebirdsql-run/reference)
+- [Env Variables](#env-variables)
+- [API Reference](https://deadnews.github.io/firebirdsql-run/reference)
 
 ## Installation
 
@@ -101,7 +101,7 @@ CompletedTransaction(
 )
 ```
 
-## Env variables
+## Env Variables
 
 ```ini
 FIREBIRD_KEY=
