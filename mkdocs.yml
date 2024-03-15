@@ -56,8 +56,6 @@ plugins:
       handlers:
         python:
           paths: [src]
-          import:
-            - https://docs.python.org/3/objects.inv
           options:
             docstring_options:
               ignore_init_summary: true
@@ -77,3 +75,5 @@ plugins:
             show_symbol_type_toc: true
             signature_crossrefs: true
             summary: true
+          import:
+            - https://docs.python.org/3/objects.inv
