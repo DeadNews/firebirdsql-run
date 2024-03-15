@@ -124,7 +124,6 @@ jobs:
 
   docs-deploy:
     name: Deploy docs
-    if: github.event.release.prerelease != true
     needs: [docs-build]
     environment:
       name: github-pages
