@@ -12,7 +12,7 @@ mod_symbol = '<code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>'
 
 src = Path(__file__).parent.parent.parent / "src"
 
-for path in sorted(src.rglob("*.py")):
+for path in src.rglob("*.py"):
     module_path = path.relative_to(src).with_suffix("")
     doc_path = path.relative_to(src / pkg_name).with_suffix(".md")
     full_doc_path = Path("reference", doc_path)
