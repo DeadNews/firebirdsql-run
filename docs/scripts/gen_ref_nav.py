@@ -4,9 +4,10 @@
 from pathlib import Path
 
 import mkdocs_gen_files
+from mkdocs_gen_files.nav import Nav
 
 pkg_name = "firebirdsql_run"
-nav = mkdocs_gen_files.Nav()
+nav = Nav()
 mod_symbol = '<code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>'
 
 src = Path(__file__).parent.parent.parent / "src"

@@ -79,7 +79,7 @@ disallow_untyped_defs = false
 
 [tool.pyright]
 include = ["src"]
-ignore = ["tests", "docs"]
+ignore = ["tests"]
 typeCheckingMode = "standard"
 
 [tool.ruff]
