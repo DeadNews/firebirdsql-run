@@ -1,4 +1,4 @@
-.PHONY: all clean test checks pc update docs
+.PHONY: all clean install update checks pc test docs run
 
 install:
 	pre-commit install
