@@ -1,19 +1,15 @@
-.PHONY: all clean test checks
-
-install-all: install pc-install
+.PHONY: all clean test checks pc update docs
 
 install:
+	pre-commit install
 	poetry install --sync
 
-pc-install:
-	pre-commit install
-
-update-latest:
+update:
 	poetry up --latest
 
-checks: pc-run install lint test
+checks: pc install lint test
 
-pc-run:
+pc:
 	pre-commit run -a
 
 lint:
@@ -27,5 +23,5 @@ test-integration:
 	poetry run pytest
 	docker compose -f docker-compose.test.yml down
 
-docs-serve:
+docs:
 	poetry run mkdocs serve
