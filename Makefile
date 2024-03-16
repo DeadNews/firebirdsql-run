@@ -1,8 +1,13 @@
-.PHONY: all clean install update checks pc test docs run
+.PHONY: all clean default install lock update checks pc test docs run
+
+default: checks
 
 install:
 	pre-commit install
 	poetry install --sync
+
+lock:
+	poetry lock --no-update
 
 update:
 	poetry up --latest
@@ -16,12 +21,12 @@ lint:
 	poetry run poe lint
 
 test:
-	poetry run pytest -m 'not dbonline'
+	poetry run poe test
+
+docs:
+	poetry run mkdocs serve
 
 test-integration:
 	docker compose -f docker-compose.test.yml up -d
 	poetry run pytest
 	docker compose -f docker-compose.test.yml down
-
-docs:
-	poetry run mkdocs serve
