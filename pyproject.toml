@@ -36,7 +36,7 @@ mkdocs-gen-files = "^0.5.0"
 mkdocs-literate-nav = "^0.6.1"
 mkdocs-material = "^9.5.13"
 mkdocstrings = "^0.24.1"
-mkdocstrings-python = "^1.8.0"
+mkdocstrings-python = "^1.9.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -79,7 +79,7 @@ disallow_untyped_defs = false
 
 [tool.pyright]
 include = ["src"]
-ignore = ["tests", "docs"]
+ignore = ["tests"]
 typeCheckingMode = "standard"
 
 [tool.ruff]
