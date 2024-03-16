@@ -21,7 +21,7 @@ lint:
 	poetry run poe lint
 
 test:
-	poetry run poe test
+	poetry run pytest -m 'not dbonline'
 
 docs:
 	poetry run mkdocs serve

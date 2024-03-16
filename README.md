@@ -8,17 +8,14 @@
 [![pre-commit.ci](https://results.pre-commit.ci/badge/github/DeadNews/firebirdsql-run/main.svg)](https://results.pre-commit.ci/latest/github/DeadNews/firebirdsql-run/main)
 [![codecov](https://codecov.io/gh/DeadNews/firebirdsql-run/branch/main/graph/badge.svg?token=OCZDZIYPMC)](https://codecov.io/gh/DeadNews/firebirdsql-run)
 
-## Table of contents
-
-- [Installation](#installation)
-- [Examples](#examples)
-- [Env Variables](#env-variables)
-- [API Reference](https://deadnews.github.io/firebirdsql-run/reference)
+**[Installation](#installation)** • **[Examples](#examples)** • **[Env Variables](#env-variables)** • **[API Reference](https://deadnews.github.io/firebirdsql-run/reference)**
 
 ## Installation
 
 ```sh
 pip install firebirdsql-run
+# or
+poetry add firebirdsql-run
 ```
 
 ## Examples
