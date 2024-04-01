@@ -21,7 +21,7 @@ class DBAccess(IntEnum):
         READ_WRITE: Read-write access mode.
     """
 
-    READ_ONLY = consts.ISOLATION_LEVEL_READ_COMMITED_RO
+    READ_ONLY = consts.ISOLATION_LEVEL_READ_COMMITED_TO
     READ_WRITE = consts.ISOLATION_LEVEL_READ_COMMITED
 
 
