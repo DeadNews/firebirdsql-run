@@ -4,12 +4,14 @@ edit_uri: blob/main/docs/
 
 nav:
   - Overview: index.md
+  - Changelog: changelog.md
   # defer to gen-files + literate-nav
   - API reference: reference/
 
 watch:
   - src
   - README.md
+  - CHANGELOG.md
 
 theme:
   name: material

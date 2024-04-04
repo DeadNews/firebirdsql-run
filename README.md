@@ -5,10 +5,9 @@
 [![PyPI: Version](https://img.shields.io/pypi/v/firebirdsql-run?logo=pypi&logoColor=white)](https://pypi.org/project/firebirdsql-run)
 [![GitHub: Release](https://img.shields.io/github/v/release/deadnews/firebirdsql-run?logo=github&logoColor=white)](https://github.com/deadnews/firebirdsql-run/releases/latest)
 [![Documentation](https://img.shields.io/badge/documentation-gray.svg?logo=materialformkdocs&logoColor=white)](https://deadnews.github.io/firebirdsql-run)
-[![Changelog](https://img.shields.io/badge/changelog-gray.svg?logo=github&logoColor=white)](https://github.com/deadnews/firebirdsql-run/blob/main/CHANGELOG.md)
-[![CI: main](https://img.shields.io/github/actions/workflow/status/deadnews/firebirdsql-run/main.yml?branch=main&logo=github&logoColor=white&label=main)](https://github.com/deadnews/firebirdsql-run/actions/workflows/main.yml)
 [![CI: pre-commit](https://results.pre-commit.ci/badge/github/DeadNews/firebirdsql-run/main.svg)](https://results.pre-commit.ci/latest/github/deadnews/firebirdsql-run/main)
-[![Coverage](https://img.shields.io/codecov/c/github/deadnews/firebirdsql-run?token=OCZDZIYPMC&logo=codecov&logoColor=white)](https://codecov.io/gh/deadnews/firebirdsql-run)
+[![CI: main](https://img.shields.io/github/actions/workflow/status/deadnews/firebirdsql-run/main.yml?branch=main&logo=github&logoColor=white&label=main)](https://github.com/deadnews/firebirdsql-run/actions/workflows/main.yml)
+[![CI: coverage](https://img.shields.io/codecov/c/github/deadnews/firebirdsql-run?token=OCZDZIYPMC&logo=codecov&logoColor=white)](https://app.codecov.io/gh/deadnews/firebirdsql-run)
 
 **[Installation](#installation)** • **[Examples](#examples)** • **[Env Variables](#env-variables)**
 
