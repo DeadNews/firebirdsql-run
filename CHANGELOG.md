@@ -1,12 +1,13 @@
 # Changelog
 
-## [1.1.2-alpha.1](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.1...v1.1.2-alpha.1) - 2024-04-07
+## [1.1.2-beta.0](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.1...v1.1.2-beta.0) - 2024-04-07
 
 ### 📚 Documentation
 
 - _(changelog)_ add `git-cliff` - ([a9d4baf](https://github.com/DeadNews/firebirdsql-run/commit/a9d4baf4c560797b9f298e4275a534ec07a5046e))
 - _(changelog)_ add `git-cliff` - ([65fe4e2](https://github.com/DeadNews/firebirdsql-run/commit/65fe4e2bd5928936dde263f5eedcc00da01d5088))
 - _(mkdocs)_ update ([#130](https://github.com/DeadNews/firebirdsql-run/issues/130)) - ([dabaf63](https://github.com/DeadNews/firebirdsql-run/commit/dabaf636900d12d9ba865be08ab06a37340cf5d6))
+- _(readme)_ update badges - ([0ef83eb](https://github.com/DeadNews/firebirdsql-run/commit/0ef83ebe41dfd240bd28798db48305f7364e1882))
 - _(readme)_ update badges - ([f6195c9](https://github.com/DeadNews/firebirdsql-run/commit/f6195c98a8a54719b803f6763d986ba4bdd6c210))
 - _(readme)_ add badges - ([10bca60](https://github.com/DeadNews/firebirdsql-run/commit/10bca6066a19a04eaa6b883fb228c74228d35775))
 - update docstrings - ([860dc75](https://github.com/DeadNews/firebirdsql-run/commit/860dc75a198162093ee703d4c7dc6c7cb33f4ea7))
