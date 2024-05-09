@@ -1,7 +1,6 @@
-version: "3"
+# Run firebird server for integration tests
 
 services:
-  # Run firebird server for integration tests
   db:
     image: jacobalberty/firebird:v5.0.0@sha256:a9d407892a9efa005f6456c0bb6daccabe73f747707663249ea6d061c5defe66
     ports:

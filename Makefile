@@ -27,9 +27,9 @@ docs:
 	poetry run mkdocs serve
 
 test-integration:
-	docker compose -f docker-compose.test.yml up -d
+	docker compose -f docker-compose.firebird.yml up -d
 	poetry run pytest
-	docker compose -f docker-compose.test.yml down
+	docker compose -f docker-compose.firebird.yml down
 
 bumped:
 	git cliff --bumped-version
