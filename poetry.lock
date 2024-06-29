@@ -232,12 +232,12 @@ test = ["pytest (>=6)"]
 
 [[package]]
 name = "firebirdsql"
-version = "1.2.5"
+version = "1.2.6"
 description = "Firebird RDBMS bindings for python."
 optional = false
 python-versions = "*"
 files = [
-    {file = "firebirdsql-1.2.5.tar.gz", hash = "sha256:ac47a347379352a270742927fea6f509bdf4a30654a471950e49ea2db990d401"},
+    {file = "firebirdsql-1.2.6.tar.gz", hash = "sha256:f7f5f8b6125d921df5865ea8023b78827a71a4fa4e7fd157eb514b6f6fe70ca5"},
 ]
 
 [[package]]
