@@ -1,17 +1,24 @@
 # Changelog
 
-## [1.1.2-beta.1](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.1...v1.1.2-beta.1) - 2024-04-08
+## [1.1.2](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.1...v1.1.2) - 2024-07-15
 
 ### 📚 Documentation
 
-- _(changelog)_ add `git-cliff` - ([a9d4baf](https://github.com/DeadNews/firebirdsql-run/commit/a9d4baf4c560797b9f298e4275a534ec07a5046e))
-- _(changelog)_ add `git-cliff` - ([65fe4e2](https://github.com/DeadNews/firebirdsql-run/commit/65fe4e2bd5928936dde263f5eedcc00da01d5088))
-- _(mkdocs)_ add `navigation.instant` - ([3bb011f](https://github.com/DeadNews/firebirdsql-run/commit/3bb011fb2e0ddf69b5ba393bac772ef9da71bf71))
+- _(changelog)_ update `git-cliff` config - ([2bfcb9a](https://github.com/DeadNews/firebirdsql-run/commit/2bfcb9a557a4d50113d14c90efd58dca0f86c6ee))
+- _(changelog)_ add `git-cliff` ([#131](https://github.com/DeadNews/firebirdsql-run/issues/131)) - ([7dd822e](https://github.com/DeadNews/firebirdsql-run/commit/7dd822e9aa796816144bc8c7e6a69d86c525e3cc))
 - _(mkdocs)_ update ([#130](https://github.com/DeadNews/firebirdsql-run/issues/130)) - ([dabaf63](https://github.com/DeadNews/firebirdsql-run/commit/dabaf636900d12d9ba865be08ab06a37340cf5d6))
-- _(readme)_ update badges - ([0ef83eb](https://github.com/DeadNews/firebirdsql-run/commit/0ef83ebe41dfd240bd28798db48305f7364e1882))
-- _(readme)_ update badges - ([f6195c9](https://github.com/DeadNews/firebirdsql-run/commit/f6195c98a8a54719b803f6763d986ba4bdd6c210))
 - _(readme)_ add badges - ([10bca60](https://github.com/DeadNews/firebirdsql-run/commit/10bca6066a19a04eaa6b883fb228c74228d35775))
 - update docstrings - ([860dc75](https://github.com/DeadNews/firebirdsql-run/commit/860dc75a198162093ee703d4c7dc6c7cb33f4ea7))
+
+### 🧹 Chores
+
+- _(typos)_ ignore short words - ([c41e9aa](https://github.com/DeadNews/firebirdsql-run/commit/c41e9aa18b13a754ecc884bb224c2e8c3dab9ed5))
+
+### ⬆️ Dependencies
+
+- _(deps)_ update dependencies ([#154](https://github.com/DeadNews/firebirdsql-run/issues/154)) - ([a3f4651](https://github.com/DeadNews/firebirdsql-run/commit/a3f465182d1c66eadc1fc13cbd5e92194ada85d2))
+- _(deps)_ add `passlib` dependency ([#152](https://github.com/DeadNews/firebirdsql-run/issues/152)) - ([f152964](https://github.com/DeadNews/firebirdsql-run/commit/f1529645489e0db67a125c93f98a8e5322533c2c))
+- _(deps)_ update dependency firebirdsql to v1.2.6 ([#147](https://github.com/DeadNews/firebirdsql-run/issues/147)) - ([ad9996d](https://github.com/DeadNews/firebirdsql-run/commit/ad9996d9eaaca1bca4d14abe96a86c841c9f9d93))
 
 ## [1.1.1](https://github.com/DeadNews/firebirdsql-run/compare/v1.0.7...v1.1.1) - 2024-02-26
 
@@ -116,7 +123,7 @@
 - _(renovate)_ use shared config - ([4a83cc4](https://github.com/DeadNews/firebirdsql-run/commit/4a83cc46b63fe1d75e5f95719f4f4bb652b3b5d8))
 - update `workflows` ([#64](https://github.com/DeadNews/firebirdsql-run/issues/64)) - ([a437498](https://github.com/DeadNews/firebirdsql-run/commit/a4374984035d5f77d20639d94a35e68dc4eeb152))
 
-## [1.0.2] - 2023-05-07
+## [1.0.2](https://github.com/DeadNews/firebirdsql-run/commits/v1.0.2) - 2023-05-07
 
 ### 🚀 Features
 
