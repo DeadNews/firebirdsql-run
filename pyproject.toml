@@ -17,13 +17,13 @@ classifiers = ["Operating System :: OS Independent", "Topic :: Database"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-firebirdsql = "^1.2.6"
-passlib = "^1.7.4"
+firebirdsql = "==1.2.6"
+passlib = "==1.7.4"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "^1.11.0"
+mypy = "^1.11.1"
 poethepoet = "^0.27.0"
-pyright = "^1.1.373"
+pyright = "^1.1.375"
 ruff = "^0.5.5"
 
 [tool.poetry.group.test.dependencies]
@@ -35,7 +35,7 @@ pytest-mock = "^3.14.0"
 mkdocs = "^1.6.0"
 mkdocs-gen-files = "^0.5.0"
 mkdocs-literate-nav = "^0.6.1"
-mkdocs-material = "^9.5.30"
+mkdocs-material = "^9.5.31"
 mkdocstrings = "^0.25.2"
 mkdocstrings-python = "^1.10.7"
 
