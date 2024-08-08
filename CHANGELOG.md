@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.3](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.2...v1.1.3) - 2024-08-08
+
+### 🐛 Bug fixes
+
+- pin `firebirdsql` version - ([acf9b4e](https://github.com/DeadNews/firebirdsql-run/commit/acf9b4e28de30a462cfb20878a3d0c9e7b9b4cc9))
+
 ## [1.1.2](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.1...v1.1.2) - 2024-07-15
 
 ### 📚 Documentation
