@@ -1,6 +1,7 @@
 import pytest
-from firebirdsql_run.util import GetEnvError, Timer, get_env
 from pytest_mock import MockerFixture
+
+from firebirdsql_run.util import GetEnvError, Timer, get_env
 
 
 def test_get_env_existing_variable(mocker: MockerFixture):
