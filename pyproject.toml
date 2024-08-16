@@ -23,8 +23,8 @@ passlib = "==1.7.4"
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.11.1"
 poethepoet = "^0.27.0"
-pyright = "^1.1.375"
-ruff = "^0.5.5"
+pyright = "^1.1.376"
+ruff = "^0.6.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.2"
@@ -37,7 +37,7 @@ mkdocs-gen-files = "^0.5.0"
 mkdocs-literate-nav = "^0.6.1"
 mkdocs-material = "^9.5.31"
 mkdocstrings = "^0.25.2"
-mkdocstrings-python = "^1.10.7"
+mkdocstrings-python = "^1.10.8"
 
 [tool.poetry-dynamic-versioning]
 enable = true
