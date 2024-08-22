@@ -13,23 +13,20 @@ update:
 	poetry up --latest
 
 checks: pc install lint test
-
 pc:
 	pre-commit run -a
-
 lint:
 	poetry run poe lint
-
 test:
 	poetry run pytest -m 'not dbonline'
-
-docs:
-	poetry run mkdocs serve
 
 test-integration:
 	docker compose -f docker-compose.firebird.yml up -d
 	poetry run pytest
 	docker compose -f docker-compose.firebird.yml down
+
+docs:
+	poetry run mkdocs serve
 
 bumped:
 	git cliff --bumped-version
