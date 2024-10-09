@@ -23,7 +23,7 @@ passlib = "==1.7.4"
 [tool.poetry.group.lint.dependencies]
 mypy = "^1.11.2"
 poethepoet = "^0.29.0"
-pyright = "^1.1.383"
+pyright = "^1.1.384"
 ruff = "^0.6.9"
 
 [tool.poetry.group.test.dependencies]
