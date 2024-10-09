@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.4-alpha.0](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.3...v1.1.4-alpha.0) - 2024-10-09
+
+### 🧹 Chores
+
+- update makefile - ([520a45c](https://github.com/DeadNews/firebirdsql-run/commit/520a45c156fe260351d2c66d693cc5dc94976226))
+
+### ⚙️ CI/CD
+
+- _(github)_ remove `firebird:v4` from tests matrix - ([f6d3a41](https://github.com/DeadNews/firebirdsql-run/commit/f6d3a41805a92ecc8b6bb83ec9e4c067e12550cf))
+- _(github)_ add `python:3.13` to tests matrix - ([7955319](https://github.com/DeadNews/firebirdsql-run/commit/79553191abfdfbd81fb7b4bcfc18474a9217cebb))
+
+### ⬆️ Dependencies
+
+- _(deps)_ update dependency firebirdsql to v1.3.1 ([#159](https://github.com/DeadNews/firebirdsql-run/issues/159)) - ([ff9553a](https://github.com/DeadNews/firebirdsql-run/commit/ff9553aa56a5d2c20553666703f75ca933022df9))
+
 ## [1.1.3](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.2...v1.1.3) - 2024-08-08
 
 ### 🐛 Bug fixes
