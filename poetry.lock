@@ -257,12 +257,12 @@ test = ["pytest (>=6)"]
 
 [[package]]
 name = "firebirdsql"
-version = "1.3.3"
+version = "1.3.4"
 description = "Firebird RDBMS bindings for python."
 optional = false
 python-versions = "*"
 files = [
-    {file = "firebirdsql-1.3.3.tar.gz", hash = "sha256:6a23ec06e6b18c449924022edc6d3468724e25c653fc8a9e2ab3a33956ee9a77"},
+    {file = "firebirdsql-1.3.4.tar.gz", hash = "sha256:75e1d5e140d0dccb8b3490f0887f6ddaedc5c5b7be0c43f15852fe6c0eba88e9"},
 ]
 
 [[package]]
@@ -1241,4 +1241,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "094187a7beb6e7eae0a01a42e206495c7ddc7dbb8a6871ac63810613fda36c76"
+content-hash = "c0af8baf4105999eb23fcabcaf53b2c027cffbebaab1b9c085fda690b6449999"
