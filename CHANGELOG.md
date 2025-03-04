@@ -1,18 +1,21 @@
 # Changelog
 
-## [1.1.4-alpha.0](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.3...v1.1.4-alpha.0) - 2024-10-09
+## [1.1.4](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.3...v1.1.4) - 2025-03-04
 
 ### 🧹 Chores
 
+- _(config)_ migrate config .renovaterc.json ([#183](https://github.com/DeadNews/firebirdsql-run/issues/183)) - ([71d5f67](https://github.com/DeadNews/firebirdsql-run/commit/71d5f679cc115afa8181603baaeeccf160788cc6))
 - update makefile - ([520a45c](https://github.com/DeadNews/firebirdsql-run/commit/520a45c156fe260351d2c66d693cc5dc94976226))
 
 ### ⚙️ CI/CD
 
-- _(github)_ remove `firebird:v4` from tests matrix - ([f6d3a41](https://github.com/DeadNews/firebirdsql-run/commit/f6d3a41805a92ecc8b6bb83ec9e4c067e12550cf))
-- _(github)_ add `python:3.13` to tests matrix - ([7955319](https://github.com/DeadNews/firebirdsql-run/commit/79553191abfdfbd81fb7b4bcfc18474a9217cebb))
+- _(github)_ add `python:3.13` to tests matrix ([#179](https://github.com/DeadNews/firebirdsql-run/issues/179)) - ([08f8ab4](https://github.com/DeadNews/firebirdsql-run/commit/08f8ab42936e087ae59c386159642c1cff31681a))
 
 ### ⬆️ Dependencies
 
+- _(deps)_ update dependency firebirdsql to v1.3.4 ([#200](https://github.com/DeadNews/firebirdsql-run/issues/200)) - ([a00da10](https://github.com/DeadNews/firebirdsql-run/commit/a00da10c677a3f1d5b25973f8909f2955537cd32))
+- _(deps)_ update dependency firebirdsql to v1.3.3 ([#199](https://github.com/DeadNews/firebirdsql-run/issues/199)) - ([7c44a85](https://github.com/DeadNews/firebirdsql-run/commit/7c44a857996cf434e12cc5b2e667f92e609bdfb6))
+- _(deps)_ update dependency firebirdsql to v1.3.2 ([#180](https://github.com/DeadNews/firebirdsql-run/issues/180)) - ([6b8a15c](https://github.com/DeadNews/firebirdsql-run/commit/6b8a15cdb7179264e215e2d778c94e7d71885dd8))
 - _(deps)_ update dependency firebirdsql to v1.3.1 ([#159](https://github.com/DeadNews/firebirdsql-run/issues/159)) - ([ff9553a](https://github.com/DeadNews/firebirdsql-run/commit/ff9553aa56a5d2c20553666703f75ca933022df9))
 
 ## [1.1.3](https://github.com/DeadNews/firebirdsql-run/compare/v1.1.2...v1.1.3) - 2024-08-08
